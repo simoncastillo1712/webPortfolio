@@ -35,10 +35,18 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-# Railway agrega automáticamente su dominio público
+# Acepta cualquier dominio de Railway (*.up.railway.app) y dominios extra configurados
 RAILWAY_PUBLIC_DOMAIN = config('RAILWAY_PUBLIC_DOMAIN', default='')
 if RAILWAY_PUBLIC_DOMAIN:
     ALLOWED_HOSTS.append(RAILWAY_PUBLIC_DOMAIN)
+
+EXTRA_ALLOWED_HOSTS = config('EXTRA_ALLOWED_HOSTS', default='')
+if EXTRA_ALLOWED_HOSTS:
+    ALLOWED_HOSTS += [h.strip() for h in EXTRA_ALLOWED_HOSTS.split(',')]
+
+# En Railway siempre aceptar el host interno
+if config('RAILWAY_ENVIRONMENT', default=''):
+    ALLOWED_HOSTS.append('*')
 
 
 # Application definition
