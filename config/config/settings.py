@@ -153,3 +153,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 RESEND_API_KEY = config('RESEND_API_KEY', default='')
 DEFAULT_FROM_EMAIL = config('EMAIL_FROM', default='onboarding@resend.dev')
 CONTACT_EMAIL = config('CONTACT_EMAIL', default='simon.castillo.a@gmail.com')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+}

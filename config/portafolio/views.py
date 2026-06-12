@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
 import resend
+import logging
 from .models import MensajeContacto
+
+logger = logging.getLogger(__name__)
 
 
 def inicio(request):
@@ -33,14 +36,16 @@ def contacto(request):
             )
             try:
                 resend.api_key = settings.RESEND_API_KEY
-                resend.Emails.send({
+                logger.info(f"Enviando email via Resend desde {settings.DEFAULT_FROM_EMAIL} a {settings.CONTACT_EMAIL}")
+                result = resend.Emails.send({
                     'from': settings.DEFAULT_FROM_EMAIL,
                     'to': [settings.CONTACT_EMAIL],
                     'subject': f'[Portafolio] {asunto} — {nombre}',
                     'text': f'De: {nombre} <{email}>\n\n{mensaje}',
                 })
-            except Exception:
-                pass  # El mensaje ya quedó guardado en BD
+                logger.info(f"Resend result: {result}")
+            except Exception as e:
+                logger.error(f"Error enviando email via Resend: {e}", exc_info=True)
 
             messages.success(request, '¡Mensaje enviado! Te responderé dentro de 24 horas hábiles.')
             return redirect('contacto')
