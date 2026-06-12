@@ -1,8 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block contenido %}
 <section class="section-card mb-4">
-    <h1 class="section-title">Sobre mí</h1>
+    <div class="row align-items-center g-4 mb-4">
+        <div class="col-auto">
+            <div style="width:120px; height:120px; border-radius:50%; overflow:hidden; border: 3px solid var(--accent); box-shadow: 0 0 24px rgba(25,198,200,0.4);">
+                <img src="{% static 'img/perfil.jpg' %}" alt="Simón Castillo"
+                    style="width:100%; height:100%; object-fit:cover;"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(25,198,200,0.1);font-size:2.5rem;\'>👤</div>'">
+            </div>
+        </div>
+        <div>
+            <h1 class="section-title mb-1">Sobre mí</h1>
+            <p class="text-muted-custom mb-0">Desarrollador Web · Data Science · Santiago, Chile</p>
+        </div>
+    </div>
     <p class="text-muted-custom mb-2">
         Soy <strong>Simón Adrián Castillo Armijo</strong>, Técnico Analista de Datos e Ingeniero en Ciencia de Datos (en
         formación),
@@ -111,6 +124,34 @@
         <span class="badge rounded-pill badge-tech px-3 py-2">Adobe Creative Cloud</span>
         <span class="badge rounded-pill badge-tech px-3 py-2">Canva</span>
         <span class="badge rounded-pill badge-tech px-3 py-2">Google Workspace</span>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3 mb-3">Actualmente aprendiendo</h2>
+    <p class="text-muted-custom mb-3">Tecnologías y herramientas en las que me estoy especializando este año:</p>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.5rem;">⚛️</div>
+                <h3 class="h6 fw-bold">React</h3>
+                <p class="text-muted-custom mb-0" style="font-size:.9rem;">Construcción de interfaces dinámicas con componentes reutilizables.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.5rem;">🟢</div>
+                <h3 class="h6 fw-bold">Node.js</h3>
+                <p class="text-muted-custom mb-0" style="font-size:.9rem;">Backend con JavaScript y construcción de APIs REST.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.5rem;">🐳</div>
+                <h3 class="h6 fw-bold">Docker</h3>
+                <p class="text-muted-custom mb-0" style="font-size:.9rem;">Containerización de aplicaciones para deploys reproducibles.</p>
+            </div>
+        </div>
     </div>
 </section>
 

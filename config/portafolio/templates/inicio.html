@@ -1,17 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block contenido %}
 <section class="section-card mb-4">
     <div class="row align-items-center g-4">
         <div class="col-lg-8">
+            <div class="mb-3">
+                <span class="badge rounded-pill px-3 py-2 fw-semibold"
+                    style="background: rgba(25,198,100,0.18); border: 1px solid rgba(25,198,100,0.55); color: #5dffa0; font-size: .85rem;">
+                    ● Disponible para trabajar
+                </span>
+            </div>
             <p class="text-uppercase text-info fw-semibold mb-2">Portafolio de Desarrollador Web</p>
             <h1 class="display-5 fw-bold mb-3">Construyo Soluciones Web con foco en impacto, diseño y resultados</h1>
-            <p>Entrego proyectos con interfaces profesionales, usabilidad  funcionalidades optimizadas, 
-                para potenciar la presencia digital de marcas y empresas.</p><br>
+            <p>Entrego proyectos con interfaces profesionales, usabilidad y funcionalidades optimizadas,
+                para potenciar la presencia digital de marcas y empresas.</p>
             <p class="lead text-muted-custom mb-4">
                 Soy Simón Castillo A., Diseñador, Científico de Datos y Desarrollador Web con enfoque en experiencias digitales profesionales,
                 interfaces limpias, proyectos orientados a métricas e insights basados en datos para optimizar funcionalidades y procesos.<br>
-                Mi portafolio destaca proyectos con tecnologías como Django, Python, Bootstrap y Machine Learning, aplicados a casos reales de negocio.                
+                Mi portafolio destaca proyectos con tecnologías como Django, Python, Bootstrap y Machine Learning, aplicados a casos reales de negocio.
             </p>
             <div class="d-flex flex-wrap gap-2 mb-4">
                 <span class="badge rounded-pill badge-tech px-3 py-2">Django</span>
@@ -22,39 +29,63 @@
             <a href="{% url 'proyectos' %}" class="btn btn-accent btn-lg me-2">Ver Proyectos</a>
             <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Contactar</a>
         </div>
-        <div class="col-lg-4">
-            <div class="section-card h-100">
-                <h2 class="h4">Perfil Profesional</h2>
-                <p class="text-muted-custom mb-0">
-                    Diseñador, Desarrollador y Científico de Datos.
-                    Combino visión de negocio, diseño UX/UI y desarrollo técnico 
-                    para crear productos escalables y soluciones empresariales eficientes.
-                </p>
+        <div class="col-lg-4 text-center">
+            <div class="section-card h-100 d-flex flex-column align-items-center justify-content-center gap-3">
+                <div style="width:150px; height:150px; border-radius:50%; overflow:hidden; border: 3px solid var(--accent); box-shadow: 0 0 24px rgba(25,198,200,0.4);">
+                    <img src="{% static 'img/perfil.jpg' %}" alt="Simón Castillo"
+                        style="width:100%; height:100%; object-fit:cover;"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(25,198,200,0.1);font-size:3rem;\'>👤</div>'">
+                </div>
+                <div>
+                    <h2 class="h5 mb-1">Simón Castillo A.</h2>
+                    <p class="text-muted-custom mb-0" style="font-size:.9rem;">Desarrollador Web · Data Science · Santiago, Chile</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm">LinkedIn</a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section-card">
+<section class="section-card mb-4">
     <h2 class="section-title">Propuesta de valor</h2>
     <div class="row g-3">
         <div class="col-md-4">
             <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.8rem;">🎨</div>
                 <h3 class="h5">Diseño profesional</h3>
                 <p class="text-muted-custom mb-0">Interfaces modernas, limpias y orientadas a la confianza del usuario.</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.8rem;">⚡</div>
                 <h3 class="h5">Desarrollo orientado a resultados</h3>
                 <p class="text-muted-custom mb-0">Implementación con foco en rendimiento, mantenibilidad y objetivos medibles.</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.8rem;">📊</div>
                 <h3 class="h5">Data y analítica</h3>
                 <p class="text-muted-custom mb-0">Decisiones basadas en datos para optimizar funcionalidades y procesos.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-card">
+    <h2 class="section-title mb-3">Actividad en GitHub</h2>
+    <div class="row g-3 justify-content-center">
+        <div class="col-12 text-center">
+            <img src="https://github-readme-stats.vercel.app/api?username=simoncastillo1712&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1b2e&title_color=19c6c8&icon_color=47bfff&text_color=b8d0e8&hide=contribs"
+                alt="GitHub Stats de Simón Castillo" class="img-fluid rounded-3" style="max-width:500px;">
+        </div>
+        <div class="col-12 text-center">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=simoncastillo1712&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1b2e&title_color=19c6c8&text_color=b8d0e8"
+                alt="Lenguajes más usados" class="img-fluid rounded-3" style="max-width:400px;">
         </div>
     </div>
 </section>
