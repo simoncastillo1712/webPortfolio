@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section class="section-card mb-4">
+    <h1 class="section-title">Contacto</h1>
+    <p class="text-muted-custom mb-0">
+        ¿Tienes una oportunidad laboral o algún proyecto?<br>
+        Estoy disponible para colaborar en análisis de datos, desarrollo web y soluciones de negocio orientadas a resultados.
+    </p>
+</section>
+
+<section class="section-card mb-4">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <h2 class="h4 mb-3">Información de contacto</h2>
+            <ul class="list-unstyled text-muted-custom">
+                <li class="mb-2"><strong>Email:</strong> <a href="mailto:simon.castillo.a@gmail.com" class="text-decoration-none">simon.castillo.a@gmail.com</a></li>
+                <li class="mb-2"><strong>Teléfono:</strong> <a href="tel:+56958883107" class="text-decoration-none">+56 9 5888 3107</a></li>
+                <li class="mb-2"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="text-decoration-none">linkedin.com/in/simón-castillo-armijo</a></li>
+                <li class="mb-2"><strong>GitHub:</strong> <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="text-decoration-none">github.com/simoncastillo1712</a></li>
+                <li class="mb-2"><strong>Ubicación:</strong> Santiago de Chile</li>
+            </ul>
+            <div class="p-3 rounded-3 border border-secondary-subtle text-muted-custom mt-3">
+                <p class="mb-2">Modalidad: Remoto o híbrido.</p>
+                <p class="mb-2">Horario: Lunes a viernes, 09:00–18:00 (CLT UTC-4).</p>
+                <p class="mb-0">Respuesta: dentro de 24 horas hábiles.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="h4 mb-3">Envíame un mensaje</h2>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} mb-3" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nombre" class="form-label text-muted-custom">Nombre completo</label>
+                    <input type="text" class="form-control bg-transparent text-light border-secondary" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label text-muted-custom">Correo electrónico</label>
+                    <input type="email" class="form-control bg-transparent text-light border-secondary" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="asunto" class="form-label text-muted-custom">Asunto</label>
+                    <input type="text" class="form-control bg-transparent text-light border-secondary" id="asunto" name="asunto" required placeholder="¿En qué puedo ayudarte?">
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label text-muted-custom">Mensaje</label>
+                    <textarea class="form-control bg-transparent text-light border-secondary" id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntame sobre tu proyecto u oportunidad..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-accent w-100">Enviar mensaje</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

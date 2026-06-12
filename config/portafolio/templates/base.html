@@ -1,0 +1,227 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portafolio | Simón Castillo A.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        :root {
+            --bg-main: #05070d;
+            --bg-soft: #0b0f1a;
+            --surface: rgba(12, 18, 30, 0.78);
+            --surface-2: rgba(9, 15, 26, 0.9);
+            --accent: #19c6c8;
+            --accent-2: #47bfff;
+            --accent-3: #7dd8ff;
+            --text-main: #eaf7ff;
+            --text-muted: #a9bfd0;
+            --border: rgba(71, 191, 255, 0.22);
+            --border-strong: rgba(17, 224, 190, 0.63);
+        }
+
+        body {
+            background-color: #03070e;
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(25, 198, 200, 0.30), transparent 34%),
+                radial-gradient(circle at 84% 20%, rgba(71, 191, 255, 0.22), transparent 38%),
+                radial-gradient(circle at 78% 80%, rgba(17, 224, 190, 0.18), transparent 40%),
+                radial-gradient(circle at 28% 74%, rgba(25, 198, 200, 0.16), transparent 42%),
+                linear-gradient(145deg, #02040a 0%, #050b16 34%, #071726 58%, #03101d 78%, #02040a 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar-custom {
+            background: rgba(5, 10, 18, 0.72);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: var(--text-main) !important;
+            transition: color .2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-2) !important;
+        }
+
+        .content-wrapper {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .section-card {
+            background:
+                linear-gradient(145deg, rgba(13, 22, 36, 0.88), rgba(8, 14, 24, 0.94));
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            box-shadow:
+                0 12px 34px rgba(0, 0, 0, 0.34),
+                0 0 0 1px rgba(125, 216, 255, 0.12),
+                0 0 14px rgba(25, 198, 200, 0.14),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            padding: 2rem;
+            transition: box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .section-card:hover {
+            border-color: rgba(71, 191, 255, 0.36);
+            box-shadow:
+                0 14px 36px rgba(0, 0, 0, 0.36),
+                0 0 0 1px rgba(125, 216, 255, 0.2),
+                0 0 22px rgba(25, 198, 200, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .border,
+        .card,
+        .list-group-item,
+        .accordion-item,
+        .form-control,
+        .form-select {
+            border-color: rgba(71, 191, 255, 0.28) !important;
+            box-shadow:
+                0 0 0 1px rgba(125, 216, 255, 0.08),
+                0 0 10px rgba(25, 198, 200, 0.08);
+            transition: box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+        }
+
+        .border:hover,
+        .card:hover,
+        .list-group-item:hover,
+        .accordion-item:hover {
+            border-color: rgba(71, 191, 255, 0.42) !important;
+            box-shadow:
+                0 0 0 1px rgba(125, 216, 255, 0.14),
+                0 0 14px rgba(25, 198, 200, 0.14);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: rgba(71, 191, 255, 0.58) !important;
+            box-shadow:
+                0 0 0 0.2rem rgba(25, 198, 200, 0.2),
+                0 0 16px rgba(71, 191, 255, 0.2) !important;
+            background-color: rgba(7, 16, 29, 0.92);
+            color: var(--text-main);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: .2px;
+        }
+
+        .text-muted-custom {
+            color: var(--text-muted);
+        }
+
+        .badge-tech {
+            background:
+                linear-gradient(135deg, rgba(25, 198, 200, 0.20), rgba(71, 191, 255, 0.18));
+            color: #d8f8ff;
+            border: 1px solid var(--border-strong);
+            margin-right: .5rem;
+            margin-bottom: .5rem;
+            font-weight: 600;
+            box-shadow:
+                0 0 0 1px rgba(125, 216, 255, 0.15),
+                0 0 10px rgba(25, 198, 200, 0.35),
+                0 0 18px rgba(71, 191, 255, 0.25);
+            transition: transform .2s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .badge-tech:hover {
+            transform: translateY(-1px);
+            border-color: rgba(17, 224, 190, 0.88);
+            box-shadow:
+                0 0 0 1px rgba(125, 216, 255, 0.25),
+                0 0 14px rgba(25, 198, 200, 0.50),
+                0 0 28px rgba(71, 191, 255, 0.40);
+        }
+
+        a {
+            color: var(--accent-3);
+        }
+
+        a:hover {
+            color: #b6ecff;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            background: rgba(5, 10, 18, 0.68);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-accent {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #031018;
+            font-weight: 700;
+            box-shadow:
+                0 0 0 1px rgba(71, 191, 255, 0.24),
+                0 10px 24px rgba(25, 198, 200, 0.45),
+                0 0 22px rgba(71, 191, 255, 0.45);
+        }
+
+        .btn-accent:hover {
+            opacity: 0.95;
+            color: #021018;
+            transform: translateY(-1px);
+            box-shadow:
+                0 0 0 1px rgba(71, 191, 255, 0.35),
+                0 14px 28px rgba(25, 198, 200, 0.58),
+                0 0 30px rgba(71, 191, 255, 0.62);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'inicio' %}"><h3>Simón Castillo A.</h3></a>
+            <button class="navbar-toggler border-secondary-subtle" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarPortafolio" aria-controls="navbarPortafolio" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarPortafolio">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sobre_mi' %}">Sobre mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'proyectos' %}">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container content-wrapper">
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    <footer class="py-4 mt-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <p class="mb-0">© 2026 Simón Castillo A. — Diseñador, Desarrollador Web y Científico de Datos.</p>
+            <small>Portafolio profesional</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

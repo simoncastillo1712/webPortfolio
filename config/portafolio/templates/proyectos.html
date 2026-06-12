@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<section class="section-card mb-4">
+    <h1 class="section-title mb-3">Proyectos Destacados</h1>
+    <p class="text-muted-custom mb-0">
+        En esta sección presento 5 proyectos de desarrollo web, publicados en mi GitHub, mostrando funcionalidades clave y evidencias visuales de cada solución<br>
+        Además incluyo un proyecto de Machine Learning orientado a la predicción de consumo de combustible en camiones CAEX para minería, con resultados y visualizaciones relevantes. <br>
+        <br> 
+        Cada proyecto incluye una descripción detallada, tecnologías utilizadas y capturas de pantalla para ilustrar su funcionalidad y diseño.<br>
+        Tambien puedes descargar mi CV completo y acceder a mi GitHub para ahondar en mi experiencia profesional, formación y habilidades técnicas. </p> <br>
+
+<section class="section-card mb-4">
+    <h2 class="h3">1) Billetera Digital AlkeWallet</h2>
+    <p class="text-muted-custom">
+        Aplicación web de billetera digital enfocada en operaciones financieras básicas:
+        inicio de sesión, consulta de saldo, depósitos y envío de dinero entre contactos.
+        El proyecto prioriza una experiencia de usuario clara y validaciones de flujo para transacciones.
+        Tiene como objetivo ofrecer una solución simple y funcional para la gestión de finanzas personales.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap. 
+        Se implementaron funcionalidades de autenticación, manejo de sesiones, validaciones de formularios 
+        y diseño responsivo para garantizar una experiencia óptima en dispositivos móviles y de escritorio.
+    </p>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/billetera digital/1.1 Inicio.png' %}" alt="Billetera Digital - Inicio">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/billetera digital/2.1 Depositar.png' %}" alt="Billetera Digital - Depósito">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/billetera digital/3.1 Enviar Dinero.png' %}" alt="Billetera Digital - Enviar dinero">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/ALKE-WALLET" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver repositorio en GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">2) Sitio Web Supermercado Soa Juana</h2>
+    <p class="text-muted-custom">
+        Plataforma tipo e-commerce para supermercado con navegación por categorías,
+        visualización de productos, carrito de compra y módulo administrativo (CRUD) para gestión de catálogo.
+        Está orientado a digitalizar la experiencia de compra y administración del negocio.
+        Tiene como objetivo agilizar el proceso de compra para clientes y facilitar la gestión de productos para el negocio.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap.
+        Se implementaron funcionalidades de navegación por categorías, visualización detallada de productos, gestión de carrito de compras y un panel administrativo para CRUD de productos, con validaciones y diseño responsivo.
+    </p>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/supermercado/1.0.Inicio.png' %}" alt="Supermercado - Inicio">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/supermercado/2.1 Productos listado.png' %}" alt="Supermercado - Listado de productos">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/supermercado/4.1. Carrito.png' %}" alt="Supermercado - Carrito de compras">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Supermercado-Soa-Juana" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver repositorio en GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">3) Sitio Web Adóptame.cl</h2>
+    <p class="text-muted-custom">
+        Sitio web orientado a la adopción responsable de mascotas, con secciones de
+        adopciones, hogares temporales, donaciones y tienda solidaria. Incluye panel de administración para
+        gestionar registros y contenidos, facilitando la operación de la plataforma.
+        El objetivo es conectar a personas con mascotas en situación de calle, promoviendo la adopción y el apoyo comunitario.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap.
+        Se implementaron funcionalidades de navegación por secciones, visualización de perfiles de mascotas, gestión de hogares temporales, integración de formulario de donaciones y un panel administrativo para CRUD de registros, con validaciones y diseño responsivo para una experiencia óptima en diferentes dispositivos.
+    </p>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/adoptame/1.1 Inicio.png' %}" alt="Adóptame - Inicio">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/adoptame/2.1 Adopciones.png' %}" alt="Adóptame - Adopciones">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/adoptame/4.1 Donaciones.png' %}" alt="Adóptame - Donaciones">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Adoptame.cl" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver repositorio en GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">4) Sitio Web Venta de Tickets</h2>
+    <p class="text-muted-custom">
+        <strong>Descripción:</strong> Plataforma para difusión y venta de entradas de eventos, con exploración de
+        cartelera, detalle por evento, carrito y beneficios por inicio de sesión.
+        El flujo está pensado para agilizar la compra y mejorar la experiencia del usuario final.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap.
+        Se implementaron funcionalidades de navegación por cartelera, visualización detallada de eventos, gestión de carrito de compras, integración de beneficios por inicio de sesión y 
+        diseño responsivo para garantizar una experiencia óptima en dispositivos móviles y de escritorio. 
+    </p>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/tickets/1.1 Inicio.png' %}" alt="Tickets - Inicio">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/tickets/2.1 Eventos.png' %}" alt="Tickets - Eventos">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/tickets/3.1 Carrito.png' %}" alt="Tickets - Carrito">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Tickets.cl" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver repositorio en GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">5) Predicción de Consumo de Combustible de Camiones CAEX (Minería)</h2>
+    <p class="text-muted-custom">
+        Proyecto de Machine Learning orientado a predecir el nivel de combustible en camiones CAEX
+        para anticipar recargas, reducir detenciones no planificadas y apoyar la logística operacional en minería.
+        El trabajo incluye integración de datos de sensores, análisis exploratorio, feature engineering temporal,
+        modelamiento predictivo y una capa operativa de priorización tipo semáforo.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Aporte técnico relevante:</strong> Se construyó un modelo temporal con variables como <em>nivel_lag_1</em> y
+        <em>dt_min</em>, obteniendo alta precisión en predicción de corto plazo (MAE/RMSE bajos y R² cercano a 1 en escenario
+        simulado). Además, se desarrolló simulación de horizontes (30/60/90 min) y reglas de decisión logística para
+        determinar qué camiones deben recargar primero según criticidad.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Tecnologías utilizadas: </strong>Python, Pandas, Scikit-learn, Matplotlib y Seaborn para análisis y modelamiento.
+        Se implementaron técnicas de feature engineering temporal, modelado predictivo con regresión y evaluación de métricas de desempeño, 
+        junto con visualizaciones para interpretar resultados y una lógica de priorización operativa basada en reglas logísticas. 
+        El proyecto demuestra la aplicación de ciencia de datos para optimizar procesos críticos en la industria minera.
+    </p>
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/1. Portada.png' %}" alt="Minería - Portada del proyecto">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/2. Simulacion Consumo.png' %}" alt="Minería - Simulación de consumo">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/3. Regla Logistica.png' %}" alt="Minería - Regla logística">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/4. Horizontes.png' %}" alt="Minería - Horizontes de predicción">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/5. Estado Camiones.png' %}" alt="Minería - Estado de camiones">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/6. Tiempo DisponibleMinutos Comb.png' %}" alt="Minería - Tiempo disponible de combustible">
+        </div>
+        <div class="col-12">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/7. Impacto en Producción.png' %}" alt="Minería - Impacto en producción">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Prediccion-de-Combustible-en-Camiones-CAEX" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver repositorio en GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">6) Sitio Web Extintores REXFIRE</h2>
+    <p class="text-muted-custom">
+        Plataforma e-commerce completa para empresa chilena de extintores, que combina una tienda pública
+        con un panel administrativo y un asistente de ventas con inteligencia artificial.
+        Los clientes se identifican por RUT (sin contraseña), pueden explorar el catálogo con especificaciones técnicas,
+        agregar productos al carrito y completar la compra, generando una boleta en PDF automáticamente.
+        El sistema aplica 19% de IVA, calcula despacho y ofrece envío gratis sobre $300.000 CLP.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Característica destacada — REXI (chatbot IA):</strong> Widget flotante que recomienda extintores
+        según el uso y entorno del cliente, con acceso en tiempo real al inventario y precios,
+        adición directa al carrito desde el chat, generación de cotizaciones por correo y
+        seguimiento de conversaciones con detección automática de abandono.
+        Además integra WhatsApp vía Twilio para atención multicanal.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Panel administrativo:</strong> Gestión completa de inventario, clientes, proveedores, vendedores
+        y ventas con comisiones automáticas del 20% para vendedores humanos. Incluye reportes de ventas,
+        monitoreo de conversaciones del chatbot y origen del pedido (web directa vs. IA).
+    </p>
+    <p class="text-muted-custom">
+        <strong>Tecnologías utilizadas:</strong> Django 6.0.3, Python, MySQL 8.0, Bootstrap 5.3.2,
+        DeepSeek API (IA generativa), Twilio (WhatsApp), Pillow y generación de PDF.
+    </p>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Extintores-Rexfire" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver repositorio en GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">7) Proyecto Creativo:</h2>
+    <h5>Desarrollo de Vestuario para Videoclip</h5>
+    <p class="text-muted-custom">
+        Participé en el desarrollo de vestuario para la producción audiovisual del videoclip
+        <strong>"Niña de Mis Ojos"</strong> de la cantante urbana emergente <strong>Aioris</strong>.<br>
+        Este trabajo se realizó en <strong>2024</strong>, alineando la propuesta estética con las
+        indicaciones y solicitudes creativas de la artista para reforzar su identidad visual.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Cantante:</strong> Aioris <br>
+        <strong>Año:</strong> 2024 <br>
+        <strong>Canción:</strong> Niña de Mis Ojos <br>
+        <strong>Estilo musical:</strong> Urbano
+    </p>
+    <div class="ratio ratio-16x9 mt-3 mb-3">
+        <iframe
+            src="https://www.youtube.com/embed/rC6gaTsugB8?enablejsapi=1&origin=http://127.0.0.1:8000&rel=0&playsinline=1"
+            title="Aioris - Niña de Mis Ojos (Videoclip Oficial)"
+            frameborder="0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p class="text-muted-custom mb-0">
+        <a href="https://www.youtube.com/watch?v=rC6gaTsugB8&list=RDrC6gaTsugB8&start_radio=1"
+           target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver videoclip en YouTube
+        </a>
+    </p>
+</section>
+
+<section class="section-card">
+    <h2 class="h3 mb-3">¿Quieres saber más sobre mí?</h2>
+    <p class="text-muted-custom mb-2">
+        Puedes revisar estos y otros proyectos en mi perfil de GitHub, incluyendo código fuente y evolución de cada desarrollo.
+    </p>
+    <p class="text-muted-custom mb-3">
+       También puedes descargar mi Curriculum Vitae en formato PDF para una visión completa de mi experiencia, habilidades y trayectoria profesional.
+    </p>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ir a mi GitHub
+        </a>
+        <a href="{% static 'docs/CV Simon Castillo (Tech).pdf' %}" download class="btn btn-accent">
+            Descargar CV
+        </a>
+    </div>
+</section>
+{% endblock %}

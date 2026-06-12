@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section class="section-card mb-4">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+            <p class="text-uppercase text-info fw-semibold mb-2">Portafolio de Desarrollador Web</p>
+            <h1 class="display-5 fw-bold mb-3">Construyo Soluciones Web con foco en impacto, diseño y resultados</h1>
+            <p>Entrego proyectos con interfaces profesionales, usabilidad  funcionalidades optimizadas, 
+                para potenciar la presencia digital de marcas y empresas.</p><br>
+            <p class="lead text-muted-custom mb-4">
+                Soy Simón Castillo A., Diseñador, Científico de Datos y Desarrollador Web con enfoque en experiencias digitales profesionales,
+                interfaces limpias, proyectos orientados a métricas e insights basados en datos para optimizar funcionalidades y procesos.<br>
+                Mi portafolio destaca proyectos con tecnologías como Django, Python, Bootstrap y Machine Learning, aplicados a casos reales de negocio.                
+            </p>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <span class="badge rounded-pill badge-tech px-3 py-2">Django</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Python</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Bootstrap</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Machine Learning</span>
+            </div>
+            <a href="{% url 'proyectos' %}" class="btn btn-accent btn-lg me-2">Ver Proyectos</a>
+            <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Contactar</a>
+        </div>
+        <div class="col-lg-4">
+            <div class="section-card h-100">
+                <h2 class="h4">Perfil Profesional</h2>
+                <p class="text-muted-custom mb-0">
+                    Diseñador, Desarrollador y Científico de Datos.
+                    Combino visión de negocio, diseño UX/UI y desarrollo técnico 
+                    para crear productos escalables y soluciones empresariales eficientes.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-card">
+    <h2 class="section-title">Propuesta de valor</h2>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <h3 class="h5">Diseño profesional</h3>
+                <p class="text-muted-custom mb-0">Interfaces modernas, limpias y orientadas a la confianza del usuario.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <h3 class="h5">Desarrollo orientado a resultados</h3>
+                <p class="text-muted-custom mb-0">Implementación con foco en rendimiento, mantenibilidad y objetivos medibles.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <h3 class="h5">Data y analítica</h3>
+                <p class="text-muted-custom mb-0">Decisiones basadas en datos para optimizar funcionalidades y procesos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
