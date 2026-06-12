@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.conf import settings
+import resend
 from .models import MensajeContacto
 
 
@@ -32,13 +32,13 @@ def contacto(request):
                 mensaje=mensaje,
             )
             try:
-                send_mail(
-                    subject=f'[Portafolio] {asunto} — {nombre}',
-                    message=f'De: {nombre} <{email}>\n\n{mensaje}',
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[settings.CONTACT_EMAIL],
-                    fail_silently=False,
-                )
+                resend.api_key = settings.RESEND_API_KEY
+                resend.Emails.send({
+                    'from': settings.DEFAULT_FROM_EMAIL,
+                    'to': [settings.CONTACT_EMAIL],
+                    'subject': f'[Portafolio] {asunto} — {nombre}',
+                    'text': f'De: {nombre} <{email}>\n\n{mensaje}',
+                })
             except Exception:
                 pass  # El mensaje ya quedó guardado en BD
 
