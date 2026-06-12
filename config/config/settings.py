@@ -35,6 +35,12 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://simoncastillo.cl',
+    'https://www.simoncastillo.cl',
+    'https://portafolio-scastillo-production.up.railway.app',
+]
+
 # Acepta cualquier dominio de Railway (*.up.railway.app) y dominios extra configurados
 RAILWAY_PUBLIC_DOMAIN = config('RAILWAY_PUBLIC_DOMAIN', default='')
 if RAILWAY_PUBLIC_DOMAIN:
