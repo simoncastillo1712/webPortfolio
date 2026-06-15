@@ -20,6 +20,10 @@ def proyectos(request):
     return render(request, 'proyectos.html')
 
 
+def calculadora(request):
+    return render(request, 'calculadora.html')
+
+
 def contacto(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre', '').strip()

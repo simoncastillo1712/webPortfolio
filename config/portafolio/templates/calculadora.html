@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cotiza tu proyecto web | Simón Castillo A.{% endblock %}
+
+{% block contenido %}
+
+<link rel="stylesheet" href="{% static 'css/calculadora.css' %}">
+
+<section class="calc-hero py-5 mb-4" style="margin: -2rem -12px 0; border-radius: 0 0 1rem 1rem;">
+  <div class="container text-center">
+    <span class="badge mb-3" style="background:#19c6c8;color:#0d1b2e;font-size:.85rem;padding:.4rem .9rem;border-radius:2rem;">
+      Sin compromisos
+    </span>
+    <h1 class="fw-bold mb-3" style="color:#fff;">Calculadora de Presupuesto Web</h1>
+    <p class="lead mb-0" style="color:#b8d0e8;max-width:560px;margin:0 auto;">
+      Selecciona las funcionalidades que necesitas y obtén un presupuesto estimado al instante.
+      Luego contáctame y lo conversamos.
+    </p>
+  </div>
+</section>
+
+<div class="row g-4 align-items-start">
+
+  <!-- COLUMNA IZQUIERDA: features -->
+  <div class="col-lg-8" id="features-container">
+    <!-- Generado dinámicamente por calculadora.js -->
+  </div>
+
+  <!-- COLUMNA DERECHA: resumen sticky -->
+  <div class="col-lg-4">
+    <div class="calc-summary sticky-top" style="top:80px;">
+
+      <h5 class="mb-4" style="color:#19c6c8;">
+        <i class="bi bi-calculator me-2"></i>Resumen del presupuesto
+      </h5>
+
+      <!-- Métricas -->
+      <div class="calc-metric mb-2">
+        <span class="calc-metric__label">Implementación inicial</span>
+        <span class="calc-metric__value">$350.000</span>
+      </div>
+      <div class="calc-metric calc-metric--accent mb-2">
+        <span class="calc-metric__label">Suscripción mensual</span>
+        <span class="calc-metric__value" id="total-monthly">$0</span>
+      </div>
+      <div class="calc-metric mb-3">
+        <span class="calc-metric__label">Total primer año</span>
+        <span class="calc-metric__value fw-bold" id="total-year">$350.000</span>
+      </div>
+
+      <hr style="border-color:#1e3a5f;">
+
+      <!-- Lista de seleccionadas -->
+      <p class="small mb-2" style="color:#b8d0e8;">
+        Features seleccionadas (<span id="count">0</span>)
+      </p>
+      <ul class="calc-selected-list mb-3" id="selected-list">
+        <li class="calc-empty-msg">Ninguna feature seleccionada aún</li>
+      </ul>
+
+      <button class="btn btn-sm btn-outline-secondary w-100 mb-3" onclick="clearAll()">
+        Limpiar selección
+      </button>
+
+      <hr style="border-color:#1e3a5f;">
+
+      <!-- Packs rápidos -->
+      <p class="small fw-bold mb-2" style="color:#b8d0e8;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;">
+        Cargar pack rápido
+      </p>
+      <div id="pack-buttons" class="d-grid gap-2 mb-4">
+        <!-- Generado por JS -->
+      </div>
+
+      <hr style="border-color:#1e3a5f;">
+
+      <!-- CTA -->
+      <a href="{% url 'contacto' %}" class="btn w-100 fw-bold"
+         style="background:#19c6c8;color:#0d1b2e;border-radius:.6rem;">
+        Solicitar presupuesto →
+      </a>
+      <p class="text-center mt-2" style="font-size:.75rem;color:#b8d0e8;">
+        Respondo en menos de 24 horas
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/calculadora.js' %}"></script>
+{% endblock %}
