@@ -4,41 +4,18 @@
 {% block contenido %}
 <section class="section-card mb-4">
     <div class="row align-items-center g-4">
-        <div class="col-lg-8">
-            <div class="mb-3">
-                <span class="badge rounded-pill px-3 py-2 fw-semibold"
-                    style="background: rgba(25,198,100,0.18); border: 1px solid rgba(25,198,100,0.55); color: #5dffa0; font-size: .85rem;">
-                    ● Disponible para trabajar
-                </span>
-            </div>
-            <p class="text-uppercase text-info fw-semibold mb-2">Portafolio de Desarrollador Web</p>
-            <h1 class="display-5 fw-bold mb-3">Construyo Soluciones Web con foco en impacto, diseño y resultados</h1>
-            <p>Entrego proyectos con interfaces profesionales, usabilidad y funcionalidades optimizadas,
-                para potenciar la presencia digital de marcas y empresas.</p>
-            <p class="lead text-muted-custom mb-4">
-                Soy Simón Castillo A., Diseñador, Científico de Datos y Desarrollador Web con enfoque en experiencias digitales profesionales,
-                interfaces limpias, proyectos orientados a métricas e insights basados en datos para optimizar funcionalidades y procesos.<br>
-                Mi portafolio destaca proyectos con tecnologías como Django, Python, Bootstrap y Machine Learning, aplicados a casos reales de negocio.
-            </p>
-            <div class="d-flex flex-wrap gap-2 mb-4">
-                <span class="badge rounded-pill badge-tech px-3 py-2">Django</span>
-                <span class="badge rounded-pill badge-tech px-3 py-2">Python</span>
-                <span class="badge rounded-pill badge-tech px-3 py-2">Bootstrap</span>
-                <span class="badge rounded-pill badge-tech px-3 py-2">Machine Learning</span>
-            </div>
-            <a href="{% url 'proyectos' %}" class="btn btn-accent btn-lg me-2">Ver Proyectos</a>
-            <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Contactar</a>
-        </div>
-        <div class="col-lg-4 text-center">
-            <div class="section-card h-100 d-flex flex-column align-items-center justify-content-center gap-3">
-                <div style="width:150px; height:150px; border-radius:50%; overflow:hidden; border: 3px solid var(--accent); box-shadow: 0 0 24px rgba(25,198,200,0.4);">
+
+        <!-- Foto: primero en mobile (order-1), segundo en desktop (order-lg-2) -->
+        <div class="col-lg-4 order-1 order-lg-2 text-center">
+            <div class="d-flex flex-column align-items-center gap-3 py-2">
+                <div style="width:130px; height:130px; border-radius:50%; overflow:hidden; border: 3px solid var(--accent); box-shadow: 0 0 24px rgba(25,198,200,0.4); flex-shrink:0;">
                     <img src="{% static 'img/perfil.jpg' %}" alt="Simón Castillo"
                         style="width:100%; height:100%; object-fit:cover;"
                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(25,198,200,0.1);font-size:3rem;\'>👤</div>'">
                 </div>
                 <div>
                     <h2 class="h5 mb-1">Simón Castillo A.</h2>
-                    <p class="text-muted-custom mb-0" style="font-size:.78rem; white-space:nowrap;">Desarrollador | Diseñador | Científico de Datos</p>
+                    <p class="text-muted-custom mb-0" style="font-size:.8rem;">Desarrollador · Diseñador · Científico de Datos</p>
                     <p class="text-muted-custom mb-0" style="font-size:.85rem;">Santiago, Chile</p>
                 </div>
                 <div class="d-flex gap-2">
@@ -47,6 +24,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- Texto: segundo en mobile (order-2), primero en desktop (order-lg-1) -->
+        <div class="col-lg-8 order-2 order-lg-1">
+            <div class="mb-3">
+                <span class="badge rounded-pill px-3 py-2 fw-semibold"
+                    style="background: rgba(25,198,100,0.18); border: 1px solid rgba(25,198,100,0.55); color: #5dffa0; font-size: .85rem;">
+                    ● Disponible para trabajar
+                </span>
+            </div>
+            <p class="text-uppercase text-info fw-semibold mb-2" style="font-size:.8rem;">Portafolio de Desarrollador Web</p>
+            <h1 class="fw-bold mb-3" style="font-size: clamp(1.5rem, 5vw, 2.5rem); line-height:1.2;">
+                Construyo Soluciones Web con foco en impacto, diseño y resultados
+            </h1>
+            <p class="text-muted-custom mb-4">
+                Soy Simón Castillo A., Diseñador, Científico de Datos y Desarrollador Web con enfoque en experiencias digitales profesionales,
+                interfaces limpias y proyectos orientados a métricas e insights basados en datos.
+            </p>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <span class="badge rounded-pill badge-tech px-3 py-2">Django</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Python</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Bootstrap</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Machine Learning</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{% url 'proyectos' %}" class="btn btn-accent btn-lg">Ver Proyectos</a>
+                <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Contactar</a>
+            </div>
+        </div>
+
     </div>
 </section>
 
