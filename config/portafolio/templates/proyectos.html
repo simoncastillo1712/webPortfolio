@@ -5,14 +5,148 @@
 <section class="section-card mb-4">
     <h1 class="section-title mb-3">Proyectos Destacados</h1>
     <p class="text-muted-custom mb-0">
-        En esta sección presento 5 proyectos de desarrollo web, publicados en mi GitHub, mostrando funcionalidades clave y evidencias visuales de cada solución<br>
+        En esta sección presento 6 proyectos de desarrollo web, comenzando por EntreMuchos, una plataforma full-stack en producción desplegada en la nube, y los demás publicados en mi GitHub, mostrando funcionalidades clave y evidencias visuales de cada solución<br>
         Además incluyo un proyecto de Machine Learning orientado a la predicción de consumo de combustible en camiones CAEX para minería, con resultados y visualizaciones relevantes. <br>
         <br> 
         Cada proyecto incluye una descripción detallada, tecnologías utilizadas y capturas de pantalla para ilustrar su funcionalidad y diseño.<br>
         Tambien puedes descargar mi CV completo y acceder a mi GitHub para ahondar en mi experiencia profesional, formación y habilidades técnicas. </p> <br>
 
+<section class="section-card mb-4 border border-info-subtle">
+    <span class="badge text-bg-info mb-2">Proyecto destacado · En producción</span>
+    <h2 class="h3">1) EntreMuchos — Plataforma Full-Stack en la Nube (www.entremuchos.cl)</h2>
+    <p class="text-muted-custom">
+        Plataforma web en producción para un club y recinto de eventos en Santiago de Chile, que integra en un solo
+        sistema: <strong>tienda online</strong> de ropa por encargo, <strong>venta digital de entradas</strong>,
+        <strong>consumo de barra</strong> por ticket, <strong>gestión de staff y finanzas</strong>,
+        <strong>comunidad</strong> (chat, mural y coordinación de encuentros) y un <strong>asistente de IA</strong>
+        disponible en web y WhatsApp. Es un producto real, con usuarios reales y pagos reales, desarrollado de punta a punta:
+        modelado de datos, backend, frontend, integraciones, despliegue y operación.
+    </p>
+
+    <div class="row g-3 mt-1 mb-2">
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">738</div><small class="text-muted-custom">commits en producción</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">66</div><small class="text-muted-custom">migraciones de base de datos</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">1.800+</div><small class="text-muted-custom">clientes registrados</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">8+</div><small class="text-muted-custom">servicios externos integrados</small></div></div>
+    </div>
+
+    <h3 class="h5 mt-3">Qué resuelve</h3>
+    <ul class="text-muted-custom">
+        <li><strong>EMStore:</strong> tienda de ropa por encargo con variantes de color Pantone, carrito y retiro presencial en eventos.</li>
+        <li><strong>Ticketing:</strong> entradas digitales, FreePass, ventana de evento activo de 10 horas, panel de asistencia y reserva de estacionamiento.</li>
+        <li><strong>Consumo de barra:</strong> cuenta abierta por ticket, pedidos detallados, reglas de cierre automático según tipo de entrada y control de prendas en custodia.</li>
+        <li><strong>Gestión interna:</strong> sueldos semanales calculados por turnos, tarifas y comisiones; adelantos y bonos; inventario de barra; ingresos, egresos, deudas en cuotas y dashboard estadístico.</li>
+        <li><strong>Comunidad:</strong> canales públicos y mensajes directos, mural con publicaciones pagadas, galería de video y módulo de coordinación de encuentros con fotos efímeras y cola de moderación.</li>
+        <li><strong>Muchi (chatbot IA):</strong> asistente basado en DeepSeek que atiende dudas sobre entradas, tienda y ubicación, tanto en la web como por WhatsApp.</li>
+    </ul>
+
+    <h3 class="h5 mt-3">Arquitectura cloud</h3>
+    <ul class="text-muted-custom">
+        <li><strong>Aplicación:</strong> Django 6 + Python 3.13 servido con Gunicorn en <strong>Railway</strong>, con <strong>despliegue continuo desde GitHub</strong> (cada push a <em>main</em> genera un deploy), build reproducible (Nixpacks), volúmenes persistentes y configuración 100% por variables de entorno (12-factor).</li>
+        <li><strong>Datos:</strong> MySQL 8 (utf8mb4) con 66 migraciones versionadas.</li>
+        <li><strong>Archivos y video:</strong> <strong>Cloudflare R2</strong> (almacenamiento compatible con S3 vía <em>django-storages</em> y <em>boto3</em>) y <strong>Cloudflare Stream</strong> (video HLS).</li>
+        <li><strong>Estáticos:</strong> WhiteNoise con compresión y manifiesto versionado.</li>
+        <li><strong>Observabilidad:</strong> integración con Sentry para monitoreo de errores y trazas.</li>
+        <li><strong>Pagos:</strong> <strong>Flow.cl</strong> y <strong>Mercado Pago</strong>, incluyendo pagos únicos y suscripciones recurrentes (Preapproval), con herramienta propia de auditoría de pagos.</li>
+        <li><strong>Mensajería:</strong> Resend (correo principal) con Gmail API como respaldo, y WhatsApp vía Green API.</li>
+    </ul>
+
+    <h3 class="h5 mt-3">Seguridad y privacidad</h3>
+    <ul class="text-muted-custom">
+        <li><strong>Transporte:</strong> HTTPS obligatorio con redirección SSL, cookies de sesión y CSRF seguras, y HSTS por 1 año con subdominios y preload.</li>
+        <li><strong>Credenciales:</strong> contraseñas con PBKDF2 y validadores de complejidad; protección CSRF en todos los formularios; <em>SECRET_KEY</em> y todas las claves de API fuera del código (variables de entorno), con el arranque bloqueado si falta la clave secreta.</li>
+        <li><strong>Control de acceso:</strong> límite de intentos en el login del staff (5 intentos y bloqueo de 15 minutos).</li>
+        <li><strong>Verificación de edad (21+)</strong> por RUT y fecha de nacimiento.</li>
+        <li><strong>Privacidad por diseño:</strong> dirección del recinto oculta en entradas web (solo se envía por correo), dirección de anfitriones visible solo tras confirmar asistencia, fotos efímeras que se autodestruyen y moderación de reportes.</li>
+        <li><strong>Cumplimiento:</strong> política de privacidad alineada con la Ley 21.719 de protección de datos personales de Chile.</li>
+    </ul>
+
+    <p class="text-muted-custom">
+        <strong>Tecnologías utilizadas:</strong> Python, Django, MySQL, Bootstrap 5, JavaScript, Chart.js, Gunicorn, Railway,
+        Cloudflare (R2 y Stream), Flow.cl, Mercado Pago, DeepSeek API, Green API (WhatsApp), Resend, Gmail API, Sentry y WhiteNoise.
+    </p>
+
+    <h3 class="h5 mt-4">Diseño responsivo: experiencia del usuario desde el celular</h3>
+    <p class="text-muted-custom mb-0">
+        Capturas reales tomadas desde un smartphone en producción. La plataforma está pensada <em>mobile-first</em>,
+        porque la mayoría de los usuarios compra entradas y consulta eventos desde el teléfono.
+    </p>
+    <div class="row g-3 mt-1">
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/1-inicio.jpg' %}" alt="EntreMuchos - Inicio y próximos eventos" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Inicio y cartelera de eventos</small>
+        </div>
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/2-tienda.jpg' %}" alt="EntreMuchos - Tienda EMStore" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Tienda con buscador de talla</small>
+        </div>
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/3-chatbot-muchi.jpg' %}" alt="EntreMuchos - Chatbot Muchi con IA" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Muchi, asistente con IA</small>
+        </div>
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/4-carrito.jpg' %}" alt="EntreMuchos - Carrito con entradas y FreePass" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Carrito, IVA y FreePass mensual</small>
+        </div>
+    </div>
+
+    <h3 class="h5 mt-4">Panel de control completo (back-office a medida)</h3>
+    <p class="text-muted-custom">
+        Además de la parte pública, desarrollé un panel interno que permite operar todo el negocio desde un solo lugar,
+        con acceso restringido al staff y funciones separadas por área. Reemplaza planillas y procesos manuales por un sistema
+        único conectado a la misma base de datos que la tienda y las entradas.
+    </p>
+    <ul class="text-muted-custom">
+        <li><strong>Inventario:</strong> productos, categorías y proveedores de la tienda, más inventario de barra.</li>
+        <li><strong>Eventos:</strong> creación y gestión de eventos, ventana de evento activo, panel de asistencia en tiempo real y reserva de estacionamiento.</li>
+        <li><strong>Cuentas de barra:</strong> apertura de cuenta por ticket, registro de pedidos detallados, cierre automático según tipo de entrada y control de prendas en custodia.</li>
+        <li><strong>Punto de venta:</strong> módulo "Nueva Venta" para registrar ventas presenciales en el local, con boleta y vendedor asociado.</li>
+        <li><strong>Comercial:</strong> gestión de clientes, staff y ventas, con vista consolidada por evento.</li>
+        <li><strong>Staff y remuneraciones:</strong> cálculo semanal de pago según turnos, tarifas y comisiones, con adelantos y bonos.</li>
+        <li><strong>Finanzas:</strong> ingresos, egresos y deudas con control de cuotas.</li>
+        <li><strong>Comunidad y moderación:</strong> administración de galería de video, mural con publicaciones pagadas, juntas privadas (anfitriones, invitados y solicitudes) y cola de reportes.</li>
+        <li><strong>Dashboard de estadísticas:</strong> indicadores clave y gráficos con Chart.js sobre ingresos, clientes nuevos y recurrentes, entradas, FreePass emitidos, visitas, clics externos y uso del chatbot.</li>
+        <li><strong>Usuarios, perfiles y roles:</strong> creación de perfiles de cliente, staff y administrador, con roles configurables directamente desde el panel, sin tocar código. Cada rol define qué puede ver y hacer la persona y puede tener un sueldo asignado. Los privilegios siguen el principio de <strong>mínimo privilegio</strong>: el staff accede con una clave de 4 dígitos y solo ve la información que el administrador autoriza (control de acceso basado en roles).</li>
+        <li><strong>Seguridad del panel:</strong> acceso solo para staff autenticado, con límite de intentos de login (5 intentos y bloqueo de 15 minutos).</li>
+    </ul>
+
+    <h3 class="h5 mt-4">Panel de administración y métricas</h3>
+    <div class="row g-3 mt-1">
+        <div class="col-12">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/5-menu-admin.png' %}" alt="EntreMuchos - Menú del panel de control" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Panel de control: inventario, eventos, cuentas de barra, comunidad, clientes, staff y ventas</small>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/6-dashboard-kpis.png' %}" alt="EntreMuchos - Dashboard de estadísticas, indicadores" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Dashboard: clientes, recurrencia, entradas, FreePass, visitas y uso del chatbot</small>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/7-dashboard-graficos.png' %}" alt="EntreMuchos - Dashboard de estadísticas, gráficos" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Gráficos con Chart.js: ingresos diarios, segmentación de clientes y visitas</small>
+        </div>
+    </div>
+
+    <h3 class="h5 mt-4">Infraestructura en la nube</h3>
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/8-railway-deploy.png' %}" alt="Railway - Servicio en producción con MySQL y despliegue desde GitHub" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Railway: app y MySQL con volúmenes persistentes, despliegue continuo desde GitHub</small>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/9-railway-variables.png' %}" alt="Railway - Variables de entorno ocultas" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">28 variables de entorno enmascaradas: ningún secreto vive en el código</small>
+        </div>
+    </div>
+
+    <div class="mt-3 d-flex flex-wrap gap-2">
+        <a href="https://www.entremuchos.cl" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Ver sitio en vivo
+        </a>
+    </div>
+</section>
+
 <section class="section-card mb-4">
-    <h2 class="h3">1) Billetera Digital AlkeWallet</h2>
+    <h2 class="h3">2) Billetera Digital AlkeWallet</h2>
     <p class="text-muted-custom">
         Aplicación web de billetera digital enfocada en operaciones financieras básicas:
         inicio de sesión, consulta de saldo, depósitos y envío de dinero entre contactos.
@@ -43,7 +177,7 @@
 </section>
 
 <section class="section-card mb-4">
-    <h2 class="h3">2) Sitio Web Supermercado Soa Juana</h2>
+    <h2 class="h3">3) Sitio Web Supermercado Soa Juana</h2>
     <p class="text-muted-custom">
         Plataforma tipo e-commerce para supermercado con navegación por categorías,
         visualización de productos, carrito de compra y módulo administrativo (CRUD) para gestión de catálogo.
@@ -73,7 +207,7 @@
 </section>
 
 <section class="section-card mb-4">
-    <h2 class="h3">3) Sitio Web Adóptame.cl</h2>
+    <h2 class="h3">4) Sitio Web Adóptame.cl</h2>
     <p class="text-muted-custom">
         Sitio web orientado a la adopción responsable de mascotas, con secciones de
         adopciones, hogares temporales, donaciones y tienda solidaria. Incluye panel de administración para
@@ -103,7 +237,7 @@
 </section>
 
 <section class="section-card mb-4">
-    <h2 class="h3">4) Sitio Web Venta de Tickets</h2>
+    <h2 class="h3">5) Sitio Web Venta de Tickets</h2>
     <p class="text-muted-custom">
         <strong>Descripción:</strong> Plataforma para difusión y venta de entradas de eventos, con exploración de
         cartelera, detalle por evento, carrito y beneficios por inicio de sesión.
@@ -133,7 +267,7 @@
 </section>
 
 <section class="section-card mb-4">
-    <h2 class="h3">5) Predicción de Consumo de Combustible de Camiones CAEX (Minería)</h2>
+    <h2 class="h3">6) Predicción de Consumo de Combustible de Camiones CAEX (Minería)</h2>
     <p class="text-muted-custom">
         Proyecto de Machine Learning orientado a predecir el nivel de combustible en camiones CAEX
         para anticipar recargas, reducir detenciones no planificadas y apoyar la logística operacional en minería.
@@ -183,7 +317,7 @@
 </section>
 
 <section class="section-card mb-4">
-    <h2 class="h3">6) Sitio Web Extintores REXFIRE</h2>
+    <h2 class="h3">7) Sitio Web Extintores REXFIRE</h2>
     <p class="text-muted-custom">
         Plataforma e-commerce completa para empresa chilena de extintores, que combina una tienda pública
         con un panel administrativo y un asistente de ventas con inteligencia artificial.
@@ -229,7 +363,7 @@
 </section>
 
 <section class="section-card mb-4">
-    <h2 class="h3">7) Proyecto Creativo:</h2>
+    <h2 class="h3">8) Proyecto Creativo:</h2>
     <h5>Desarrollo de Vestuario para Videoclip</h5>
     <p class="text-muted-custom">
         Participé en el desarrollo de vestuario para la producción audiovisual del videoclip
