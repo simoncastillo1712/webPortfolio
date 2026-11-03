@@ -16,6 +16,10 @@ def sobre_mi(request):
     return render(request, 'sobreMi.html')
 
 
+def ciencia_datos(request):
+    return render(request, 'cienciaDatos.html')
+
+
 def proyectos(request):
     return render(request, 'proyectos.html')
 

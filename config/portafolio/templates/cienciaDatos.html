@@ -1,0 +1,301 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Científico de Datos | Simón Castillo A.{% endblock %}
+
+{% block contenido %}
+<style>
+    .ds-hero { position: relative; overflow: hidden; }
+    .ds-hero::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background-image: radial-gradient(rgba(71,191,255,.18) 1px, transparent 1px);
+        background-size: 22px 22px;
+        mask-image: linear-gradient(120deg, transparent 30%, #000 100%);
+        -webkit-mask-image: linear-gradient(120deg, transparent 30%, #000 100%);
+    }
+    .ds-hero > * { position: relative; z-index: 1; }
+    .ds-stat { text-align: center; padding: 1rem .5rem; }
+    .ds-stat__num { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+    .ds-stat__lbl { font-size: .8rem; color: var(--text-muted); }
+    .ds-icon { font-size: 1.6rem; color: var(--accent); }
+    .algo-row { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+        padding: .55rem 0; border-bottom: 1px solid rgba(71,191,255,.12); font-size: .9rem; }
+    .algo-row:last-child { border-bottom: none; }
+    .algo-row small { color: var(--text-muted); display: block; font-size: .76rem; }
+    .code-block { background: #060e1b; border: 1px solid var(--border); border-radius: .75rem;
+        padding: 1rem; font-size: .78rem; color: #cfe8ff; overflow-x: auto; margin: 0; }
+    .code-block .c { color: #6f8fb0; }
+    .code-block .k { color: #47bfff; }
+    .code-block .s { color: #7df2c6; }
+    .tl { border-left: 2px solid var(--border-strong); margin-left: .5rem; padding-left: 1.25rem; }
+    .tl-item { position: relative; margin-bottom: 1rem; }
+    .tl-item::before { content: ""; position: absolute; left: -1.7rem; top: .35rem; width: .75rem; height: .75rem;
+        border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+    .tl-item.now::before { background: #5dffa0; box-shadow: 0 0 14px #5dffa0; }
+    .tl-item.todo::before { background: transparent; border: 2px solid var(--accent-2); box-shadow: none; }
+</style>
+
+<!-- HERO -->
+<section class="section-card ds-hero mb-4">
+    <span class="badge rounded-pill px-3 py-2 fw-semibold mb-3"
+        style="background:rgba(25,198,100,.18);border:1px solid rgba(25,198,100,.55);color:#5dffa0;">
+        ● Abierto a prácticas y primer rol en Data Science
+    </span>
+    <p class="text-uppercase text-info fw-semibold mb-2" style="font-size:.8rem;">Ingeniería en Data Science · AIEP</p>
+    <h1 class="fw-bold mb-3" style="font-size:clamp(1.6rem,5vw,2.7rem);line-height:1.15;">
+        Convierto datos en <span style="color:var(--accent);">decisiones</span>:<br>
+        de la exploración al modelo predictivo
+    </h1>
+    <p class="text-muted-custom mb-4" style="max-width:720px;">
+        Más de 10 años en banca me enseñaron cómo se toman decisiones reales con números. Hoy los combino con
+        Python, Machine Learning y visualización para resolver problemas operacionales, como predecir el nivel de
+        combustible de camiones CAEX en minería y priorizar qué equipo debe recargar primero.
+    </p>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <span class="badge rounded-pill badge-tech px-3 py-2">Python</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Pandas · NumPy</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Scikit-learn</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">SQL</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Power BI</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">AWS</span>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="#caex" class="btn btn-accent btn-lg">Ver caso destacado</a>
+        <a href="{% static 'docs/CV Simon Castillo (Tech).pdf' %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">Descargar CV</a>
+        <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Contactar</a>
+    </div>
+
+    <div class="row g-2 mt-4">
+        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">6/8</div><div class="ds-stat__lbl">semestres cursados · Ing. Data Science</div></div></div>
+        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">6,5</div><div class="ds-stat__lbl">nota formativa promedio</div></div></div>
+        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">10+</div><div class="ds-stat__lbl">años en banca, foco en métricas</div></div></div>
+        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">BHP</div><div class="ds-stat__lbl">Bootcamp Minería 4.0 (UNAB · SENCE)</div></div></div>
+    </div>
+</section>
+
+<!-- QUÉ PUEDO HACER -->
+<section class="section-card mb-4">
+    <h2 class="section-title">Qué puedo hacer por tu equipo</h2>
+    <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-database-check ds-icon"></i>
+                <h3 class="h5 mt-2">Limpieza y exploración (EDA)</h3>
+                <p class="text-muted-custom mb-0">Integro fuentes (JOINs SQL, CSV, sensores), trato nulos y outliers, y detecto patrones antes de modelar.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-graph-up-arrow ds-icon"></i>
+                <h3 class="h5 mt-2">Modelos predictivos</h3>
+                <p class="text-muted-custom mb-0">Regresión, clasificación y series temporales con validación correcta (split temporal, métricas MAE/RMSE/R²).</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-diagram-3 ds-icon"></i>
+                <h3 class="h5 mt-2">De la predicción a la decisión</h3>
+                <p class="text-muted-custom mb-0">Reglas de priorización y simulación de escenarios para que el modelo se traduzca en acciones operativas.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-bar-chart-line ds-icon"></i>
+                <h3 class="h5 mt-2">Visualización y storytelling</h3>
+                <p class="text-muted-custom mb-0">Dashboards en Power BI y gráficos en Matplotlib/Seaborn pensados para audiencias no técnicas.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-cloud-check ds-icon"></i>
+                <h3 class="h5 mt-2">Datos en la nube</h3>
+                <p class="text-muted-custom mb-0">Almacenamiento y tratamiento de datos en AWS, con formación certificada en el ciclo de vida de los datos.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-shield-check ds-icon"></i>
+                <h3 class="h5 mt-2">Ética y gobierno de datos</h3>
+                <p class="text-muted-custom mb-0">Manejo responsable de la información y comunicación honesta de los límites de un modelo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ALGORITMOS -->
+<section class="section-card mb-4">
+    <h2 class="section-title mb-1">Algoritmos y técnicas que manejo</h2>
+    <div class="row g-3">
+        <div class="col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <h3 class="h6 text-info mb-2">Regresión y predicción</h3>
+                <div class="algo-row"><div>Regresión lineal<small>Predicción de nivel de combustible</small></div></div>
+                <div class="algo-row"><div>Lasso (regularización L1)<small>Selección de variables</small></div></div>
+                <div class="algo-row"><div>Random Forest Regressor<small>Comparación frente al modelo lineal</small></div></div>
+                <div class="algo-row"><div>Series de tiempo<small>Lags, <em>dt_min</em>, split temporal</small></div></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <h3 class="h6 text-info mb-2">Clasificación y minería de datos</h3>
+                <div class="algo-row"><div>Regresión logística<small>Clasificación binaria</small></div></div>
+                <div class="algo-row"><div>Árboles de decisión · KNN<small>Modelos base interpretables</small></div></div>
+                <div class="algo-row"><div>K-Means · Clustering<small>Segmentación no supervisada</small></div></div>
+                <div class="algo-row"><div>Reglas de decisión (semáforo)<small>Priorización por criticidad</small></div></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <h3 class="h6 text-info mb-2">IA y optimización</h3>
+                <div class="algo-row"><div>Redes neuronales<small>Fundamentos y entrenamiento</small></div></div>
+                <div class="algo-row"><div>Optimización no lineal<small>Descenso del gradiente</small></div></div>
+                <div class="algo-row"><div>Analítica predictiva y prescriptiva<small>Del pronóstico a la acción</small></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-3 mt-1">
+        <div class="col-12">
+            <div class="p-3 rounded-3 border">
+                <h3 class="h6 text-info mb-2">Métricas y buenas prácticas</h3>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge rounded-pill badge-tech px-3 py-2">MAE · RMSE · R²</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Train/Test split temporal</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Prevención de data leakage</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Feature engineering</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Estadística y probabilidades</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Visualización de resultados</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CASO CAEX -->
+<section class="section-card mb-4" id="caex">
+    <span class="badge mb-2" style="background:#19c6c8;color:#0d1b2e;font-size:.8rem;padding:.35rem .8rem;border-radius:2rem;">
+        Caso destacado · Minería 4.0
+    </span>
+    <h2 class="section-title mb-2">Predicción de combustible en camiones CAEX</h2>
+    <p class="text-muted-custom">
+        <strong>Problema:</strong> en minería, un camión que se queda sin combustible a mitad de ciclo detiene la producción.
+        <strong>Objetivo:</strong> anticipar el nivel de combustible de cada camión y decidir cuál debe recargar primero.
+        Proyecto desarrollado con datos de sensores en el bootcamp de Minería 4.0 (BHP · UNAB · SENCE).
+    </p>
+
+    <div class="row g-3 mb-3">
+        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">1,84 L</div><div class="ds-stat__lbl">MAE en test</div></div></div>
+        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">2,56 L</div><div class="ds-stat__lbl">RMSE en test</div></div></div>
+        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">≈ 1,00</div><div class="ds-stat__lbl">R² (nivel en miles de litros)</div></div></div>
+        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">30·60·90</div><div class="ds-stat__lbl">min de horizonte simulado</div></div></div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <h3 class="h5 text-info">Cómo lo resolví</h3>
+            <ol class="text-muted-custom ps-3">
+                <li class="mb-1"><strong>Integración:</strong> JOIN de sensores de combustible con la metadata de equipos.</li>
+                <li class="mb-1"><strong>Feature engineering temporal:</strong> <em>nivel_lag_1</em> (lectura previa) y <em>dt_min</em> (minutos entre lecturas).</li>
+                <li class="mb-1"><strong>Validación honesta:</strong> split temporal 80/20 <em>sin shuffle</em>, para no filtrar el futuro al entrenamiento.</li>
+                <li class="mb-1"><strong>Modelos:</strong> Regresión lineal como base, comparada con Lasso y Random Forest.</li>
+                <li class="mb-1"><strong>Decisión:</strong> simulación a 30/60/90 min y semáforo de criticidad para ordenar las recargas.</li>
+            </ol>
+            <p class="text-muted-custom mb-0" style="font-size:.85rem;">
+                <i class="bi bi-info-circle me-1"></i>
+                El R² cercano a 1 refleja la naturaleza casi determinista del consumo en el corto plazo; lo revisé explícitamente
+                para descartar filtración de información. El error medio de unos pocos litros es pequeño frente a la variabilidad total del estanque.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <h3 class="h5 text-info">Esquema simplificado del enfoque</h3>
+<pre class="code-block"><span class="c"># Features temporales por equipo</span>
+df = df.sort_values([<span class="s">"equipo_id"</span>, <span class="s">"timestamp"</span>])
+df[<span class="s">"nivel_lag_1"</span>] = df.groupby(<span class="s">"equipo_id"</span>)[<span class="s">"nivel"</span>].shift(<span class="k">1</span>)
+df[<span class="s">"dt_min"</span>] = df.groupby(<span class="s">"equipo_id"</span>)[<span class="s">"timestamp"</span>] \
+    .diff().dt.total_seconds() / <span class="k">60</span>
+
+<span class="c"># Split temporal (sin shuffle)</span>
+cut = <span class="k">int</span>(<span class="k">len</span>(df) * <span class="k">0.8</span>)
+train, test = df.iloc[:cut], df.iloc[cut:]
+
+model = LinearRegression().fit(train[FEATS], train[<span class="s">"nivel"</span>])
+pred = model.predict(test[FEATS])
+<span class="k">print</span>(mean_absolute_error(test[<span class="s">"nivel"</span>], pred))
+
+<span class="c"># Semáforo: minutos de autonomía restantes</span>
+<span class="k">def</span> semaforo(min_restantes):
+    <span class="k">if</span> min_restantes &lt; <span class="k">30</span>: <span class="k">return</span> <span class="s">"ROJO"</span>
+    <span class="k">if</span> min_restantes &lt; <span class="k">90</span>: <span class="k">return</span> <span class="s">"AMARILLO"</span>
+    <span class="k">return</span> <span class="s">"VERDE"</span></pre>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-2">
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/2. Simulacion Consumo.png' %}" alt="Simulación de consumo de combustible" loading="lazy"></div>
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/5. Estado Camiones.png' %}" alt="Estado de camiones CAEX" loading="lazy"></div>
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/4. Horizontes.png' %}" alt="Horizontes de predicción" loading="lazy"></div>
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/7. Impacto en Producción.png' %}" alt="Impacto en producción" loading="lazy"></div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 mt-3">
+        <a href="https://github.com/simoncastillo1712/Prediccion-de-Combustible-en-Camiones-CAEX" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            <i class="bi bi-github me-1"></i>Ver repositorio y notebook
+        </a>
+        <a href="{% url 'proyectos' %}" class="btn btn-outline-light">Ver todos los proyectos</a>
+    </div>
+</section>
+
+<!-- STACK -->
+<section class="section-card mb-4">
+    <h2 class="section-title">Herramientas</h2>
+    <div class="row g-3">
+        <div class="col-md-4"><div class="p-3 rounded-3 border h-100">
+            <h3 class="h6 text-info">Análisis y modelado</h3>
+            <p class="text-muted-custom mb-0">Python · Pandas · NumPy · Scikit-learn · Jupyter / Google Colab · Estadística</p>
+        </div></div>
+        <div class="col-md-4"><div class="p-3 rounded-3 border h-100">
+            <h3 class="h6 text-info">Visualización y BI</h3>
+            <p class="text-muted-custom mb-0">Matplotlib · Seaborn · Power BI · seguimiento de KPI · storytelling con datos</p>
+        </div></div>
+        <div class="col-md-4"><div class="p-3 rounded-3 border h-100">
+            <h3 class="h6 text-info">Datos e ingeniería</h3>
+            <p class="text-muted-custom mb-0">SQL · AWS · Django · APIs · Git y GitHub · despliegue de aplicaciones con datos</p>
+        </div></div>
+    </div>
+</section>
+
+<!-- RUTA ACADÉMICA -->
+<section class="section-card mb-4">
+    <h2 class="section-title">Ruta de formación</h2>
+    <div class="tl">
+        <div class="tl-item">
+            <h3 class="h6 mb-0">Semestres 1–4 · Fundamentos</h3>
+            <p class="text-muted-custom mb-0">Programación, bases de datos, estadística y probabilidades, ciclo de vida de los datos, analítica comercial, datos en la nube, visualización y ética del dato.</p>
+        </div>
+        <div class="tl-item now">
+            <h3 class="h6 mb-0">Semestres 5–6 · Ciencia de datos aplicada</h3>
+            <p class="text-muted-custom mb-0">Minería de datos, modelamiento, Inteligencia Artificial y Machine Learning, analítica predictiva y prescriptiva, optimización no lineal y redes neuronales.</p>
+        </div>
+        <div class="tl-item todo">
+            <h3 class="h6 mb-0">Semestres 7–8 · Especialización</h3>
+            <p class="text-muted-custom mb-0">Analítica en logística y operaciones, riesgo financiero, gestión de proyectos, proyecto de especialidad y práctica laboral.</p>
+        </div>
+    </div>
+    <p class="text-muted-custom mt-3 mb-0" style="font-size:.85rem;">
+        Además: Técnico Analista de Datos, Bootcamp Minería 4.0 (BHP · UNAB · SENCE), Bootcamp Full Stack Python (SENCE / Alkemy)
+        y cursos de Machine Learning with Python y Business Analytics Essentials.
+    </p>
+</section>
+
+<!-- CTA -->
+<section class="section-card text-center">
+    <h2 class="section-title">¿Buscas a alguien que entienda el negocio y también el dato?</h2>
+    <p class="text-muted-custom mb-4">Estoy disponible para prácticas, proyectos y primeros roles en análisis de datos y Machine Learning.</p>
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <a href="{% url 'contacto' %}" class="btn btn-accent btn-lg">Conversemos</a>
+        <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">LinkedIn</a>
+        <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">GitHub</a>
+    </div>
+</section>
+{% endblock %}
+
+
