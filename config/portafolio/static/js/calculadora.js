@@ -3,47 +3,12 @@
    Simón Castillo A. — Calculadora de Presupuesto Web
    ============================================================ */
 
-const FEATURES = [
-  // --- Contenido y administración ---
-  { id: 'cms',        cat: 'Contenido y administración', name: 'Panel CMS',               desc: 'Editor visual para que el cliente actualice sin tocar código',  price: 18000 },
-  { id: 'blog',       cat: 'Contenido y administración', name: 'Blog / noticias',          desc: 'Publicaciones con categorías, etiquetas y SEO básico',          price: 12000 },
-  { id: 'gallery',    cat: 'Contenido y administración', name: 'Galería multimedia',        desc: 'Imágenes y videos optimizados con gestor de archivos',          price: 10000 },
-  { id: 'multilang',  cat: 'Contenido y administración', name: 'Multi-idioma (i18n)',       desc: 'Versiones del sitio en más de un idioma con cambio dinámico',  price: 22000 },
-
-  // --- E-commerce y pagos ---
-  { id: 'cart',         cat: 'E-commerce y pagos', name: 'Carro de compras',        desc: 'Gestión de productos, stock y órdenes',                          price: 35000 },
-  { id: 'payment',      cat: 'E-commerce y pagos', name: 'Pasarela de pago (API)',   desc: 'Integración con Transbank, MercadoPago, Stripe u otro',          price: 28000 },
-  { id: 'clientportal', cat: 'E-commerce y pagos', name: 'Portal de clientes',       desc: 'Login, historial de compras y seguimiento de pedidos',           price: 22000 },
-  { id: 'coupons',      cat: 'E-commerce y pagos', name: 'Cupones y descuentos',     desc: 'Códigos promocionales y precios dinámicos',                      price: 15000 },
-
-  // --- Reservas y agenda ---
-  { id: 'booking',   cat: 'Reservas y agenda', name: 'Sistema de reservas',         desc: 'Calendario con disponibilidad y confirmación automática',        price: 25000 },
-  { id: 'recurring', cat: 'Reservas y agenda', name: 'Pago recurrente / membresía', desc: 'Cobro mensual automático a suscriptores',                        price: 28000 },
-
-  // --- Automatización e IA ---
-  { id: 'chatbot',       cat: 'Automatización e IA', name: 'Chatbot con IA',              desc: 'Asistente conversacional entrenado con info del negocio',      price: 45000 },
-  { id: 'smartform',     cat: 'Automatización e IA', name: 'Formularios inteligentes',    desc: 'Lógica condicional, validación y envío a CRM o email',         price: 12000 },
-  { id: 'notifications', cat: 'Automatización e IA', name: 'Notificaciones automáticas',  desc: 'Emails y/o WhatsApp automáticos por eventos del sitio',        price: 18000 },
-
-  // --- Analytics y SEO ---
-  { id: 'analytics', cat: 'Analytics y SEO', name: 'Dashboard de analytics', desc: 'Visitas, conversiones y métricas clave del negocio',             price: 15000 },
-  { id: 'seo',       cat: 'Analytics y SEO', name: 'SEO técnico',            desc: 'Meta tags, sitemap, Schema.org y velocidad de carga',           price: 15000 },
-  { id: 'reports',   cat: 'Analytics y SEO', name: 'Reportes mensuales',     desc: 'Informe PDF automático con resumen de tráfico y métricas',      price: 12000 },
-
-  // --- Infraestructura ---
-  { id: 'hosting', cat: 'Infraestructura', name: 'Hosting + dominio gestionado', desc: 'Gestión de servidor, SSL y renovación de dominio',             price: 20000 },
-  { id: 'support', cat: 'Infraestructura', name: 'Soporte y mantención',         desc: 'Corrección de bugs, actualizaciones y soporte hasta 3h/mes',  price: 30000 },
-  { id: 'backup',  cat: 'Infraestructura', name: 'Backup automático',            desc: 'Copias de seguridad diarias con restauración en 24h',         price: 12000 },
-];
-
-const PACKS = {
-  vitrina:     { label: 'Comercio pequeño',   features: ['cms', 'smartform', 'seo', 'hosting', 'support'] },
-  ecommerce:   { label: 'E-commerce',         features: ['cart', 'payment', 'clientportal', 'coupons', 'notifications', 'analytics', 'hosting', 'support', 'backup'] },
-  restaurante: { label: 'Restaurante',         features: ['cms', 'booking', 'gallery', 'notifications', 'seo', 'hosting', 'support'] },
-  clinica:     { label: 'Clínica / Médico',   features: ['booking', 'clientportal', 'chatbot', 'payment', 'notifications', 'blog', 'seo', 'hosting', 'support', 'backup'] },
-  gym:         { label: 'Gym / Deportivo',     features: ['cart', 'payment', 'recurring', 'clientportal', 'notifications', 'gallery', 'cms', 'hosting', 'support'] },
-  inmobiliaria:{ label: 'Inmobiliaria',        features: ['cms', 'chatbot', 'smartform', 'gallery', 'notifications', 'blog', 'seo', 'hosting', 'support', 'backup'] },
-};
+/* El catálogo (funcionalidades, packs e implementación) viene del servidor:
+   ver presupuesto.py. El servidor además recalcula los precios al recibir la solicitud. */
+const CATALOGO = JSON.parse(document.getElementById('catalogo-data').textContent);
+const FEATURES = CATALOGO.features;
+const PACKS = CATALOGO.packs;
+const IMPLEMENTACION = CATALOGO.implementacion;
 
 const selected = new Set();
 
@@ -108,7 +73,7 @@ function renderPacks() {
 function updatePanel() {
   const items = FEATURES.filter(f => selected.has(f.id));
   const monthly = items.reduce((s, f) => s + f.price, 0);
-  const year = 350000 + monthly * 12;
+  const year = IMPLEMENTACION + monthly * 12;
 
   document.getElementById('total-monthly').textContent = fmt(monthly);
   document.getElementById('total-year').textContent = fmt(year);
@@ -122,6 +87,13 @@ function updatePanel() {
           <span>${f.name}</span>
           <span class="calc-selected-item__price">${fmt(f.price)}</span>
         </li>`).join('');
+
+  const btn = document.getElementById('btn-solicitar');
+  if (btn) btn.disabled = items.length === 0;
+  const hint = document.getElementById('cta-hint');
+  if (hint) hint.textContent = items.length === 0
+    ? 'Selecciona al menos una funcionalidad para solicitar tu presupuesto'
+    : 'Respondo en menos de 24 horas';
 }
 
 /* ---------- acciones ---------- */
@@ -144,9 +116,71 @@ function loadPack(key) {
   updatePanel();
 }
 
+/* ---------- modal de solicitud ---------- */
+function renderModalSummary() {
+  const items = FEATURES.filter(f => selected.has(f.id));
+  const monthly = items.reduce((s, f) => s + f.price, 0);
+  document.getElementById('modal-count').textContent = items.length;
+  document.getElementById('modal-list').innerHTML = items.map(f => `
+    <li class="calc-selected-item">
+      <span>${f.name}</span>
+      <span class="calc-selected-item__price">${fmt(f.price)}/mes</span>
+    </li>`).join('');
+  document.getElementById('modal-impl').textContent = fmt(IMPLEMENTACION);
+  document.getElementById('modal-monthly').textContent = fmt(monthly);
+  document.getElementById('modal-year').textContent = fmt(IMPLEMENTACION + monthly * 12);
+}
+
+function initModal() {
+  const modalEl = document.getElementById('modalPresupuesto');
+  const form = document.getElementById('form-presupuesto');
+  const errorBox = document.getElementById('modal-error');
+  const sendBtn = document.getElementById('pp-enviar');
+
+  modalEl.addEventListener('show.bs.modal', () => {
+    renderModalSummary();
+    errorBox.hidden = true;
+    document.getElementById('modal-exito').hidden = true;
+    document.getElementById('modal-formulario').hidden = false;
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.hidden = true;
+    const data = new FormData(form);
+    selected.forEach(id => data.append('features', id));
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Enviando...';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      });
+      const json = await res.json().catch(() => ({}));
+      if (res.ok && json.ok) {
+        form.reset();
+        document.getElementById('modal-formulario').hidden = true;
+        document.getElementById('modal-exito').hidden = false;
+      } else {
+        errorBox.textContent = json.error || 'No se pudo enviar la solicitud. Intenta nuevamente.';
+        errorBox.hidden = false;
+      }
+    } catch (err) {
+      errorBox.textContent = 'No se pudo enviar la solicitud. Revisa tu conexión e intenta nuevamente.';
+      errorBox.hidden = false;
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Enviar solicitud';
+    }
+  });
+}
+
 /* ---------- init ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   renderFeatures();
   renderPacks();
   updatePanel();
+  initModal();
 });

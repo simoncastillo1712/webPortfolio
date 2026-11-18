@@ -7,6 +7,8 @@
 
 <link rel="stylesheet" href="{% static 'css/calculadora.css' %}">
 
+{{ catalogo|json_script:"catalogo-data" }}
+
 <section class="calc-hero py-5 mb-4" style="margin: -2rem -12px 0; border-radius: 0 0 1rem 1rem;">
   <div class="container text-center">
     <span class="badge mb-3" style="background:#19c6c8;color:#0d1b2e;font-size:.85rem;padding:.4rem .9rem;border-radius:2rem;">
@@ -226,18 +228,76 @@
 
       <hr style="border-color:#1e3a5f;">
 
-      <!-- CTA -->
-      <a href="{% url 'contacto' %}" class="btn w-100 fw-bold"
-         style="background:#19c6c8;color:#0d1b2e;border-radius:.6rem;">
+      <!-- CTA: se habilita al seleccionar al menos una funcionalidad -->
+      <button type="button" id="btn-solicitar" class="btn calc-cta w-100 fw-bold" disabled
+              data-bs-toggle="modal" data-bs-target="#modalPresupuesto">
         Solicitar presupuesto →
-      </a>
-      <p class="text-center mt-2" style="font-size:.75rem;color:#b8d0e8;">
-        Respondo en menos de 24 horas
+      </button>
+      <p class="text-center mt-2 mb-0" id="cta-hint" style="font-size:.75rem;color:#b8d0e8;">
+        Selecciona al menos una funcionalidad para solicitar tu presupuesto
       </p>
 
     </div>
   </div>
 
+</div>
+
+<!-- Modal: solicitud de presupuesto -->
+<div class="modal fade calc-modal" id="modalPresupuesto" tabindex="-1" aria-labelledby="modalPresupuestoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="modalPresupuestoLabel">Solicitar presupuesto</h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <div id="modal-exito" class="text-center py-4" hidden>
+          <i class="bi bi-check-circle-fill" style="font-size:3rem;color:#19c6c8;"></i>
+          <h3 class="h5 mt-3">¡Solicitud enviada!</h3>
+          <p class="text-muted-custom mb-0">Recibí tu presupuesto con las funcionalidades seleccionadas. Te responderé dentro de 24 horas hábiles.</p>
+        </div>
+
+        <div id="modal-formulario">
+          <div class="calc-modal-summary mb-4">
+            <p class="small mb-2" style="color:#b8d0e8;">Tu selección (<span id="modal-count">0</span>)</p>
+            <ul class="calc-selected-list mb-3" id="modal-list"></ul>
+            <div class="d-flex justify-content-between small"><span>Implementación inicial</span><strong id="modal-impl"></strong></div>
+            <div class="d-flex justify-content-between small"><span>Suscripción mensual</span><strong id="modal-monthly"></strong></div>
+            <div class="d-flex justify-content-between"><span>Total primer año</span><strong id="modal-year" style="color:#19c6c8;"></strong></div>
+          </div>
+
+          <div id="modal-error" class="alert alert-danger" role="alert" hidden></div>
+
+          <form id="form-presupuesto" action="{% url 'solicitar_presupuesto' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="d-none" aria-hidden="true">
+              <label>No llenar este campo <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="pp-nombre" class="form-label text-muted-custom">Nombre completo</label>
+                <input type="text" class="form-control bg-transparent text-light border-secondary" id="pp-nombre" name="nombre" required maxlength="100" placeholder="Tu nombre">
+              </div>
+              <div class="col-md-6">
+                <label for="pp-email" class="form-label text-muted-custom">Correo electrónico</label>
+                <input type="email" class="form-control bg-transparent text-light border-secondary" id="pp-email" name="email" required placeholder="tu@email.com">
+              </div>
+              <div class="col-12">
+                <label for="pp-asunto" class="form-label text-muted-custom">Asunto</label>
+                <input type="text" class="form-control bg-transparent text-light border-secondary" id="pp-asunto" name="asunto" required maxlength="200" placeholder="Ej: Sitio web para mi negocio">
+              </div>
+              <div class="col-12">
+                <label for="pp-mensaje" class="form-label text-muted-custom">Descripción</label>
+                <textarea class="form-control bg-transparent text-light border-secondary" id="pp-mensaje" name="mensaje" rows="4" required maxlength="5000" placeholder="Cuéntame sobre tu negocio y lo que necesitas..."></textarea>
+              </div>
+            </div>
+            <button type="submit" id="pp-enviar" class="btn btn-accent w-100 mt-3">Enviar solicitud</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

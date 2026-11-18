@@ -234,3 +234,35 @@
     top: auto !important;
   }
 }
+
+
+/* --- Botón solicitar presupuesto --- */
+.calc-cta {
+  background: #19c6c8;
+  color: #0d1b2e;
+  border-radius: .6rem;
+}
+.calc-cta:hover:not(:disabled) { background: #47bfff; color: #0d1b2e; }
+.calc-cta:disabled {
+  background: #19c6c8;
+  color: #0d1b2e;
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+/* --- Modal --- */
+.calc-modal .modal-content {
+  background: #0b1826;
+  border: 1px solid #1e3a5f;
+  border-radius: 12px;
+  color: #f0f8ff;
+}
+.calc-modal .modal-header,
+.calc-modal .modal-footer { border-color: #1e3a5f; }
+.calc-modal-summary {
+  background: #0d1b2e;
+  border: 1px solid #1e3a5f;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.calc-modal-summary .calc-selected-list { max-height: 160px; overflow-y: auto; }
