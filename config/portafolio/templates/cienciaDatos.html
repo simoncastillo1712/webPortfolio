@@ -27,12 +27,6 @@
     .code-block .c { color: #6f8fb0; }
     .code-block .k { color: #47bfff; }
     .code-block .s { color: #7df2c6; }
-    .tl { border-left: 2px solid var(--border-strong); margin-left: .5rem; padding-left: 1.25rem; }
-    .tl-item { position: relative; margin-bottom: 1rem; }
-    .tl-item::before { content: ""; position: absolute; left: -1.7rem; top: .35rem; width: .75rem; height: .75rem;
-        border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
-    .tl-item.now::before { background: #5dffa0; box-shadow: 0 0 14px #5dffa0; }
-    .tl-item.todo::before { background: transparent; border: 2px solid var(--accent-2); box-shadow: none; }
 </style>
 
 <!-- HERO -->
@@ -41,7 +35,7 @@
         style="background:rgba(25,198,100,.18);border:1px solid rgba(25,198,100,.55);color:#5dffa0;">
         ● Abierto a prácticas y primer rol en Data Science
     </span>
-    <p class="text-uppercase text-info fw-semibold mb-2" style="font-size:.8rem;">Ingeniería en Data Science · AIEP</p>
+    <p class="text-uppercase text-info fw-semibold mb-2" style="font-size:.8rem;">Ciencia de Datos</p>
     <h1 class="fw-bold mb-3" style="font-size:clamp(1.6rem,5vw,2.7rem);line-height:1.15;">
         Convierto datos en <span style="color:var(--accent);">decisiones</span>:<br>
         de la exploración al modelo predictivo
@@ -63,13 +57,6 @@
         <a href="#caex" class="btn btn-accent btn-lg">Ver caso destacado</a>
         <a href="{% static 'docs/CV Simon Castillo (Tech).pdf' %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">Descargar CV</a>
         <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Contactar</a>
-    </div>
-
-    <div class="row g-2 mt-4">
-        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">6/8</div><div class="ds-stat__lbl">semestres cursados · Ing. Data Science</div></div></div>
-        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">6,5</div><div class="ds-stat__lbl">nota formativa promedio</div></div></div>
-        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">10+</div><div class="ds-stat__lbl">años en banca, foco en métricas</div></div></div>
-        <div class="col-6 col-md-3"><div class="ds-stat border rounded-3"><div class="ds-stat__num">BHP</div><div class="ds-stat__lbl">Bootcamp Minería 4.0 (UNAB · SENCE)</div></div></div>
     </div>
 </section>
 
@@ -261,29 +248,6 @@ pred = model.predict(test[FEATS])
             <p class="text-muted-custom mb-0">SQL · AWS · Django · APIs · Git y GitHub · despliegue de aplicaciones con datos</p>
         </div></div>
     </div>
-</section>
-
-<!-- RUTA ACADÉMICA -->
-<section class="section-card mb-4">
-    <h2 class="section-title">Ruta de formación</h2>
-    <div class="tl">
-        <div class="tl-item">
-            <h3 class="h6 mb-0">Semestres 1–4 · Fundamentos</h3>
-            <p class="text-muted-custom mb-0">Programación, bases de datos, estadística y probabilidades, ciclo de vida de los datos, analítica comercial, datos en la nube, visualización y ética del dato.</p>
-        </div>
-        <div class="tl-item now">
-            <h3 class="h6 mb-0">Semestres 5–6 · Ciencia de datos aplicada</h3>
-            <p class="text-muted-custom mb-0">Minería de datos, modelamiento, Inteligencia Artificial y Machine Learning, analítica predictiva y prescriptiva, optimización no lineal y redes neuronales.</p>
-        </div>
-        <div class="tl-item todo">
-            <h3 class="h6 mb-0">Semestres 7–8 · Especialización</h3>
-            <p class="text-muted-custom mb-0">Analítica en logística y operaciones, riesgo financiero, gestión de proyectos, proyecto de especialidad y práctica laboral.</p>
-        </div>
-    </div>
-    <p class="text-muted-custom mt-3 mb-0" style="font-size:.85rem;">
-        Además: Técnico Analista de Datos, Bootcamp Minería 4.0 (BHP · UNAB · SENCE), Bootcamp Full Stack Python (SENCE / Alkemy)
-        y cursos de Machine Learning with Python y Business Analytics Essentials.
-    </p>
 </section>
 
 <!-- CTA -->
