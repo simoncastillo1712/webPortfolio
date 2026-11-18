@@ -64,6 +64,22 @@
             margin-left: .5rem;
         }
 
+        .lang-pill {
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            padding: .3rem .8rem;
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .lang-pill:hover {
+            border-color: var(--accent-2);
+            color: var(--accent-2);
+        }
+
         .lang-switch .nav-link:hover {
             border-color: var(--accent-2);
         }
@@ -236,10 +252,6 @@
             .nav-item:last-child .nav-link {
                 border-bottom: none;
             }
-            .lang-switch .nav-link {
-                display: inline-block;
-                margin: .5rem 0 0;
-            }
             .section-card {
                 padding: 1.25rem;
             }
@@ -264,6 +276,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{% url 'inicio' %}"><h3>Simón Castillo A.</h3></a>
+            <a class="lang-pill d-lg-none ms-auto me-2" href="{{ lang_switch_url }}" hreflang="{{ lang_switch_code }}"
+                lang="{{ lang_switch_code }}"
+                title="{% if LANGUAGE_CODE == 'en' %}Ver en español{% else %}View in English{% endif %}">
+                <i class="bi bi-translate me-1"></i>{% if LANGUAGE_CODE == 'en' %}ES{% else %}EN{% endif %}
+            </a>
             <button class="navbar-toggler border-secondary-subtle" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarPortafolio" aria-controls="navbarPortafolio" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -277,7 +294,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'proyectos' %}">{% if LANGUAGE_CODE == 'en' %}Projects{% else %}Proyectos{% endif %}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'calculadora' %}">{% if LANGUAGE_CODE == 'en' %}Get a quote{% else %}Cotizar proyecto{% endif %}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">{% if LANGUAGE_CODE == 'en' %}Contact{% else %}Contacto{% endif %}</a></li>
-                    <li class="nav-item lang-switch">
+                    <li class="nav-item lang-switch d-none d-lg-block">
                         <a class="nav-link" href="{{ lang_switch_url }}" hreflang="{{ lang_switch_code }}"
                             lang="{{ lang_switch_code }}"
                             title="{% if LANGUAGE_CODE == 'en' %}Ver en español{% else %}View in English{% endif %}">

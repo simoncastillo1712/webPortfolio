@@ -15,7 +15,7 @@
     }
     .ds-hero > * { position: relative; z-index: 1; }
     .ds-stat { text-align: center; padding: 1rem .5rem; }
-    .ds-stat__num { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+    .ds-stat__num { font-size: clamp(1.5rem, 7vw, 2rem); overflow-wrap: anywhere; font-weight: 800; color: var(--accent); line-height: 1.1; }
     .ds-stat__lbl { font-size: .8rem; color: var(--text-muted); }
     .ds-icon { font-size: 1.6rem; color: var(--accent); }
     .algo-row { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
@@ -172,7 +172,7 @@
     <div class="row g-3 mb-3">
         <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">1.84 L</div><div class="ds-stat__lbl">MAE on test set</div></div></div>
         <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">2.56 L</div><div class="ds-stat__lbl">RMSE on test set</div></div></div>
-        <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">30·60·90</div><div class="ds-stat__lbl">simulated horizon (minutes)</div></div></div>
+        <div class="col-md-4 col-12"><div class="ds-stat border rounded-3"><div class="ds-stat__num">30·60·90</div><div class="ds-stat__lbl">simulated horizon (minutes)</div></div></div>
     </div>
 
     <div class="row g-4">
