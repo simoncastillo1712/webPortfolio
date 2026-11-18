@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block contenido %}
 <section class="section-card mb-4">
@@ -16,8 +17,8 @@
             <ul class="list-unstyled text-muted-custom">
                 <li class="mb-2"><strong>Email:</strong> <a href="mailto:simon.castillo.a@gmail.com" class="text-decoration-none">simon.castillo.a@gmail.com</a></li>
                 <li class="mb-2"><strong>Teléfono:</strong> <a href="tel:+56958883107" class="text-decoration-none">+56 9 5888 3107</a></li>
-                <li class="mb-2"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="text-decoration-none">linkedin.com/in/simón-castillo-armijo</a></li>
-                <li class="mb-2"><strong>GitHub:</strong> <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="text-decoration-none">github.com/simoncastillo1712</a></li>
+                <li class="mb-2"><img src="{% static 'img/logo linkedin.png' %}" alt="" class="social-ico social-ico--li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="text-decoration-none">linkedin.com/in/simón-castillo-armijo</a></li>
+                <li class="mb-2"><img src="{% static 'img/logo github.png' %}" alt="" class="social-ico social-ico--gh"><strong>GitHub:</strong> <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="text-decoration-none">github.com/simoncastillo1712</a></li>
                 <li class="mb-2"><strong>Ubicación:</strong> Santiago de Chile</li>
             </ul>
             <div class="p-3 rounded-3 border border-secondary-subtle text-muted-custom mt-3">
