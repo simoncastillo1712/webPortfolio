@@ -170,10 +170,9 @@
     </p>
 
     <div class="row g-3 mb-3">
-        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">1,84 L</div><div class="ds-stat__lbl">MAE en test</div></div></div>
-        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">2,56 L</div><div class="ds-stat__lbl">RMSE en test</div></div></div>
-        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">≈ 1,00</div><div class="ds-stat__lbl">R² (nivel en miles de litros)</div></div></div>
-        <div class="col-md-3 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">30·60·90</div><div class="ds-stat__lbl">min de horizonte simulado</div></div></div>
+        <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">1,84 L</div><div class="ds-stat__lbl">MAE en test</div></div></div>
+        <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">2,56 L</div><div class="ds-stat__lbl">RMSE en test</div></div></div>
+        <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">30·60·90</div><div class="ds-stat__lbl">min de horizonte simulado</div></div></div>
     </div>
 
     <div class="row g-4">
@@ -186,11 +185,6 @@
                 <li class="mb-1"><strong>Modelos:</strong> Regresión lineal como base, comparada con Lasso y Random Forest.</li>
                 <li class="mb-1"><strong>Decisión:</strong> simulación a 30/60/90 min y semáforo de criticidad para ordenar las recargas.</li>
             </ol>
-            <p class="text-muted-custom mb-0" style="font-size:.85rem;">
-                <i class="bi bi-info-circle me-1"></i>
-                El R² cercano a 1 refleja la naturaleza casi determinista del consumo en el corto plazo; lo revisé explícitamente
-                para descartar filtración de información. El error medio de unos pocos litros es pequeño frente a la variabilidad total del estanque.
-            </p>
         </div>
         <div class="col-lg-6">
             <h3 class="h5 text-info">Esquema simplificado del enfoque</h3>
