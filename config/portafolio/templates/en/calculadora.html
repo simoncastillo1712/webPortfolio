@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Get a web project quote | Simón Castillo A.{% endblock %}
+
+{% block contenido %}
+
+<link rel="stylesheet" href="{% static 'css/calculadora.css' %}">
+
+{{ catalogo|json_script:"catalogo-data" }}
+
+<section class="calc-hero py-5 mb-4" style="margin: -2rem -12px 0; border-radius: 0 0 1rem 1rem;">
+  <div class="container text-center">
+    <span class="badge mb-3" style="background:#19c6c8;color:#0d1b2e;font-size:.85rem;padding:.4rem .9rem;border-radius:2rem;">
+      No strings attached
+    </span>
+    <h1 class="fw-bold mb-3" style="color:#fff;">Get a Quote for Your Web Project</h1>
+    <p class="lead mb-0" style="color:#b8d0e8;max-width:620px;margin:0 auto;">
+      Choose the model that suits you best: start with no upfront investment through the Zero-Cost Platform,
+      or put together an implementation for your company and get an instant estimated quote.
+      Then get in touch and we'll talk it over.
+    </p>
+  </div>
+</section>
+
+<!-- Alternative payment model: Zero-Cost Platform -->
+<div class="section-card mb-4" style="border:1px solid #19c6c8;">
+  <span class="badge mb-2" style="background:#19c6c8;color:#0d1b2e;font-size:.8rem;padding:.35rem .8rem;border-radius:2rem;">
+    Option 1 · No upfront investment
+  </span>
+  <div class="d-flex align-items-center gap-2 mb-2">
+    <i class="bi bi-robot" style="color:#19c6c8;font-size:1.3rem;"></i>
+    <h5 class="mb-0" style="color:#19c6c8;">Zero-Cost Platform</h5>
+  </div>
+  <p class="mb-3" style="color:#fff;font-weight:600;">
+    No upfront investment: you only pay the robot when it sells.
+  </p>
+  <p class="text-muted-custom mb-3">
+    Designed for independent professionals who want to sell more without an upfront investment.
+    I build your <strong>own custom store</strong> and put it to work with a
+    <strong>digital salesperson</strong>: an AI-powered assistant that chats with your customers,
+    answers their questions, recommends your products or services and guides them through to the purchase, at any hour of the day.
+    Instead of paying for implementation and a monthly fee, we agree on a <strong>percentage of every sale</strong> made
+    through your platform: you only pay when it sells.
+  </p>
+  <div class="row g-3">
+    <div class="col-sm-6 col-md-3">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Platform tailored to you</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">Store and design adapted to your business and your brand.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Digital salesperson</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">An assistant that serves your customers and recommends products to them.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Works while you sleep</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">Your store serves your customers 24 hours a day, even when you rest.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Agreed percentage</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">You set the percentage per sale with me, no surprises.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3">
+    <a href="{% url 'contacto' %}" class="btn fw-bold" style="background:#19c6c8;color:#0d1b2e;border-radius:.6rem;">
+      I want the Zero-Cost Platform →
+    </a>
+  </div>
+  <p class="mt-3 mb-1" style="font-size:.8rem;color:#5a7a9a;">
+    * Some external services may carry an associated cost, for example API usage (such as artificial intelligence or
+    payment gateways), real-time services, the domain name or storage. I'll let you know before
+    we start, so you know exactly what is charged and by whom.
+  </p>
+  <p class="mb-0" style="font-size:.8rem;color:#5a7a9a;">
+    * If you need something broader for your company, see the "Business Implementation" option and its calculator below.
+  </p>
+</div>
+
+<!-- Initial implementation overview -->
+<div class="section-card mb-4">
+  <span class="badge mb-2" style="background:#19c6c8;color:#0d1b2e;font-size:.8rem;padding:.35rem .8rem;border-radius:2rem;">
+    Option 2 · Implementation + subscription
+  </span>
+  <h4 class="mb-1" style="color:#fff;">Business Implementation</h4>
+  <p class="text-muted-custom mb-4">
+    So you can stay in control of your business and manage it easily, with ongoing, personalized support.
+  </p>
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <i class="bi bi-info-circle-fill" style="color:#19c6c8;font-size:1.2rem;"></i>
+    <h5 class="mb-0" style="color:#19c6c8;">What does the initial implementation include? ($350,000 CLP)</h5>
+  </div>
+  <p class="text-muted-custom mb-3">
+    The one-time implementation fee covers everything needed to get your website live, running and ready to welcome customers:
+  </p>
+  <div class="row g-3">
+    <div class="col-sm-6 col-md-4">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Custom design</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">Visual identity adapted to your brand, color palette and typography.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Up to 5 sections/pages</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">Home, services, about us, gallery, contact or others depending on the business.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Responsive (mobile + desktop)</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">The site adapts seamlessly to every device and screen size.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Contact form</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">Messages go straight to your inbox and are also stored in a database.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">Production deployment</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">Your site published online with HTTPS and a configured domain.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="d-flex gap-2 align-items-start">
+        <i class="bi bi-check-circle-fill mt-1 flex-shrink-0" style="color:#19c6c8;"></i>
+        <div>
+          <p class="mb-0 fw-semibold" style="font-size:.875rem;">1 month of free support</p>
+          <p class="mb-0 text-muted-custom" style="font-size:.78rem;">Adjustments and questions handled during the first month at no extra cost.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="mt-3 mb-0" style="font-size:.8rem;color:#5a7a9a;">
+    * The additional features you select below are added as a monthly subscription once the site is delivered.
+  </p>
+</div>
+
+<div class="row g-4 align-items-start">
+
+  <!-- COLUMNA IZQUIERDA: features -->
+  <div class="col-lg-8" id="features-container">
+    <!-- Generated dynamically by calculadora.js -->
+  </div>
+
+  <!-- COLUMNA DERECHA: resumen sticky -->
+  <div class="col-lg-4">
+    <div class="calc-summary sticky-top" style="top:80px;">
+
+      <h5 class="mb-4" style="color:#19c6c8;">
+        <i class="bi bi-calculator me-2"></i>Quote summary <small style="font-size:.7rem;color:#b8d0e8;">(CLP)</small>
+      </h5>
+
+      <!-- Metrics -->
+      <div class="calc-metric mb-2">
+        <span class="calc-metric__label">Initial implementation</span>
+        <span class="calc-metric__value">$350,000</span>
+      </div>
+      <div class="calc-metric calc-metric--accent mb-2">
+        <span class="calc-metric__label">Monthly subscription</span>
+        <span class="calc-metric__value" id="total-monthly">$0</span>
+      </div>
+      <div class="calc-metric mb-3">
+        <span class="calc-metric__label">First-year total</span>
+        <span class="calc-metric__value fw-bold" id="total-year">$350,000</span>
+      </div>
+
+      <hr style="border-color:#1e3a5f;">
+
+      <!-- Lista de seleccionadas -->
+      <p class="small mb-2" style="color:#b8d0e8;">
+        Selected features (<span id="count">0</span>)
+      </p>
+      <ul class="calc-selected-list mb-3" id="selected-list">
+        <li class="calc-empty-msg">No features selected yet</li>
+      </ul>
+
+      <button class="btn btn-sm btn-outline-secondary w-100 mb-3" onclick="clearAll()">
+        Clear selection
+      </button>
+
+      <hr style="border-color:#1e3a5f;">
+
+      <!-- Quick packs -->
+      <p class="small fw-bold mb-2" style="color:#b8d0e8;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;">
+        Load a quick pack
+      </p>
+      <div id="pack-buttons" class="d-grid gap-2 mb-4">
+        <!-- Generado por JS -->
+      </div>
+
+      <hr style="border-color:#1e3a5f;">
+
+      <!-- CTA: enabled once at least one feature is selected -->
+      <button type="button" id="btn-solicitar" class="btn calc-cta w-100 fw-bold" disabled
+              data-bs-toggle="modal" data-bs-target="#modalPresupuesto">
+        Request a quote →
+      </button>
+      <p class="text-center mt-2 mb-0" id="cta-hint" style="font-size:.75rem;color:#b8d0e8;">
+        Select at least one feature to request your quote
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal: quote request -->
+<div class="modal fade calc-modal" id="modalPresupuesto" tabindex="-1" aria-labelledby="modalPresupuestoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="modalPresupuestoLabel">Request a quote</h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div id="modal-exito" class="text-center py-4" hidden>
+          <i class="bi bi-check-circle-fill" style="font-size:3rem;color:#19c6c8;"></i>
+          <h3 class="h5 mt-3">Request sent!</h3>
+          <p class="text-muted-custom mb-0">I received your quote request with the selected features. I'll reply within 24 business hours.</p>
+        </div>
+
+        <div id="modal-formulario">
+          <div class="calc-modal-summary mb-4">
+            <p class="small mb-2" style="color:#b8d0e8;">Your selection (<span id="modal-count">0</span>)</p>
+            <ul class="calc-selected-list mb-3" id="modal-list"></ul>
+            <div class="d-flex justify-content-between small"><span>Initial implementation</span><strong id="modal-impl"></strong></div>
+            <div class="d-flex justify-content-between small"><span>Monthly subscription</span><strong id="modal-monthly"></strong></div>
+            <div class="d-flex justify-content-between"><span>First-year total</span><strong id="modal-year" style="color:#19c6c8;"></strong></div>
+          </div>
+
+          <div id="modal-error" class="alert alert-danger" role="alert" hidden></div>
+
+          <form id="form-presupuesto" action="{% url 'solicitar_presupuesto' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="d-none" aria-hidden="true">
+              <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="pp-nombre" class="form-label text-muted-custom">Full name</label>
+                <input type="text" class="form-control bg-transparent text-light border-secondary" id="pp-nombre" name="nombre" required maxlength="100" placeholder="Your name">
+              </div>
+              <div class="col-md-6">
+                <label for="pp-email" class="form-label text-muted-custom">Email address</label>
+                <input type="email" class="form-control bg-transparent text-light border-secondary" id="pp-email" name="email" required placeholder="you@email.com">
+              </div>
+              <div class="col-12">
+                <label for="pp-asunto" class="form-label text-muted-custom">Subject</label>
+                <input type="text" class="form-control bg-transparent text-light border-secondary" id="pp-asunto" name="asunto" required maxlength="200" placeholder="E.g. Website for my business">
+              </div>
+              <div class="col-12">
+                <label for="pp-mensaje" class="form-label text-muted-custom">Description</label>
+                <textarea class="form-control bg-transparent text-light border-secondary" id="pp-mensaje" name="mensaje" rows="4" required maxlength="5000" placeholder="Tell me about your business and what you need..."></textarea>
+              </div>
+            </div>
+            <button type="submit" id="pp-enviar" class="btn btn-accent w-100 mt-3">Send request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/calculadora.js' %}"></script>
+{% endblock %}

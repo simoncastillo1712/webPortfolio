@@ -1,0 +1,458 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<section class="section-card mb-4">
+    <h1 class="section-title mb-3">Featured Projects</h1>
+    <p class="text-muted-custom">In this section I present my projects, with their key features and visual evidence of each solution:</p>
+    <ul class="text-muted-custom">
+        <li><strong>6 web development projects:</strong> EntreMuchos, a full-stack platform running in production in the cloud, and the rest published on my GitHub.</li>
+        <li><strong>1 Machine Learning project</strong> that predicts fuel consumption in CAEX haul trucks in mining, with results and visualizations.</li>
+        <li><strong>Ordered by complexity:</strong> the production product first, then the Machine Learning project, then the rest, from the most to the least complex.</li>
+        <li><strong>Each project includes</strong> a detailed description, the technologies used and screenshots.</li>
+        <li>You can also download my full CV and visit my GitHub to dig deeper into my experience and technical skills.</li>
+    </ul>
+</section>
+
+<section class="section-card mb-4 border border-info-subtle">
+    <span class="badge text-bg-info mb-2">Featured project · In production</span>
+    <h2 class="h3">1) EntreMuchos — Full-Stack Cloud Platform (www.entremuchos.cl)</h2>
+    <p class="text-muted-custom">
+        A production web platform for a club and event venue in Santiago, Chile, bringing together in a single
+        system: an <strong>online store</strong> for made-to-order clothing, <strong>digital ticket sales</strong>,
+        <strong>bar tabs</strong> tied to each ticket, <strong>staff and finance management</strong>,
+        a <strong>community</strong> (chat and bulletin board) and an <strong>AI assistant</strong>
+        available on the web and on WhatsApp. It is a real product, with real users and real payments, built end to end:
+        data modeling, backend, frontend, integrations, deployment and operations.
+    </p>
+
+    <div class="row g-3 mt-1 mb-2">
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">738</div><small class="text-muted-custom">commits in production</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">66</div><small class="text-muted-custom">database migrations</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">1,800+</div><small class="text-muted-custom">registered customers</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">8+</div><small class="text-muted-custom">external services integrated</small></div></div>
+    </div>
+
+    <div class="mt-3 p-3 rounded-3" style="border:1px solid var(--border-strong); background:linear-gradient(135deg, rgba(25,198,200,.16), rgba(71,191,255,.10)); box-shadow:0 0 22px rgba(25,198,200,.28);">
+        <h3 class="h6 mb-3" style="color:var(--accent);"><i class="bi bi-cash-coin me-2"></i>Real money processed by the platform <span class="text-muted-custom" style="font-size:.78rem;font-weight:400;">(CLP · as of Nov 18, 2026)</span></h3>
+        <div class="row g-3">
+            <div class="col-6 col-md-3 text-center"><div class="h3 mb-0 fw-bold" style="color:var(--accent);">~$31M</div><small class="text-muted-custom">total revenue to date<br>(2,300+ sales)</small></div>
+            <div class="col-6 col-md-3 text-center"><div class="h3 mb-0 fw-bold" style="color:var(--accent);">~$4.5M</div><small class="text-muted-custom">revenue in the last 30 days</small></div>
+            <div class="col-6 col-md-3 text-center"><div class="h3 mb-0 fw-bold" style="color:var(--accent);">~$18M</div><small class="text-muted-custom">bar revenue<br>(closed tabs)</small></div>
+            <div class="col-6 col-md-3 text-center"><div class="h3 mb-0 fw-bold" style="color:var(--accent);">~$13,400</div><small class="text-muted-custom">average ticket per paid sale</small></div>
+        </div>
+    </div>
+
+    <h3 class="h6 text-info mt-3 mb-2">Analytics and impact</h3>
+    <div class="row g-3 mb-2">
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">12</div><small class="text-muted-custom">indicators (KPIs) in the statistics dashboard</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">27%</div><small class="text-muted-custom">of customers are repeat buyers (2+ purchases)</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">1,828</div><small class="text-muted-custom">tickets sold (all-time total)</small></div></div>
+        <div class="col-6 col-md-3"><div class="p-3 rounded-3 border border-secondary-subtle text-center h-100"><div class="h4 mb-0">~9 h</div><small class="text-muted-custom">of manual work eliminated per week</small></div></div>
+    </div>
+    <p class="text-muted-custom mb-0" style="font-size:.8rem;">
+        Real data from the statistics dashboard as of Nov 18, 2026. It replaced spreadsheet-based management and reduced data-entry errors by automating payroll, commissions, schedules and payments.
+    </p>
+
+    <h3 class="h5 mt-3">What it solves</h3>
+    <ul class="text-muted-custom">
+        <li><strong>EMStore:</strong> made-to-order clothing store with Pantone color variants, a shopping cart and in-person pickup at events.</li>
+        <li><strong>Ticketing:</strong> digital tickets, FreePass, a 10-hour active-event window, an attendance panel and parking reservations.</li>
+        <li><strong>Bar tabs:</strong> an open tab per ticket, itemized orders, automatic closing rules based on ticket type and coat-check control.</li>
+        <li><strong>Internal management:</strong> weekly payroll calculated from shifts, rates and commissions; advances and bonuses; bar inventory; income, expenses, installment debts and a statistics dashboard.</li>
+        <li><strong>Community:</strong> public channels and direct messages, a bulletin board with paid posts, a video gallery and a moderation queue.</li>
+        <li><strong>Muchi (AI chatbot):</strong> a DeepSeek-based assistant that answers questions about tickets, the store and the venue location, both on the web and on WhatsApp.</li>
+    </ul>
+
+    <h3 class="h5 mt-3">Cloud architecture</h3>
+    <ul class="text-muted-custom">
+        <li><strong>Application:</strong> Django 6 + Python 3.13 served with Gunicorn on <strong>Railway</strong>, with <strong>continuous deployment from GitHub</strong> (every push to <em>main</em> triggers a deploy), reproducible builds (Nixpacks), persistent volumes and 100% environment-variable configuration (12-factor).</li>
+        <li><strong>Data:</strong> MySQL 8 (utf8mb4) with 66 versioned migrations.</li>
+        <li><strong>Files and video:</strong> <strong>Cloudflare R2</strong> (S3-compatible storage via <em>django-storages</em> and <em>boto3</em>) and <strong>Cloudflare Stream</strong> (HLS video).</li>
+        <li><strong>Static files:</strong> WhiteNoise with compression and a versioned manifest.</li>
+        <li><strong>Observability:</strong> Sentry integration for error monitoring and tracing.</li>
+        <li><strong>Payments:</strong> <strong>Flow.cl</strong> and <strong>Mercado Pago</strong>, covering one-time payments and recurring subscriptions (Preapproval), with an in-house payment audit tool.</li>
+        <li><strong>Messaging:</strong> Resend (primary email) with the Gmail API as a fallback, and WhatsApp via Green API.</li>
+    </ul>
+
+    <h3 class="h5 mt-3">Security and privacy</h3>
+    <ul class="text-muted-custom">
+        <li><strong>Transport:</strong> mandatory HTTPS with SSL redirect, secure session and CSRF cookies, and HSTS for 1 year including subdomains and preload.</li>
+        <li><strong>Credentials:</strong> passwords hashed with PBKDF2 and complexity validators; CSRF protection on every form; <em>SECRET_KEY</em> and all API keys kept out of the code (environment variables), with startup blocked if the secret key is missing.</li>
+        <li><strong>Access control:</strong> attempt limit on the staff login (5 attempts, then a 15-minute lockout).</li>
+        <li><strong>Age verification (21+)</strong> using the national ID number (RUT) and date of birth.</li>
+        <li><strong>Privacy by design:</strong> the venue address is hidden on web tickets (it is only sent by email), plus report moderation.</li>
+        <li><strong>Compliance:</strong> privacy policy aligned with Chile's Law 21,719 on personal data protection.</li>
+    </ul>
+
+    <p class="text-muted-custom">
+        <strong>Technologies used:</strong> Python, Django, MySQL, Bootstrap 5, JavaScript, Chart.js, Gunicorn, Railway,
+        Cloudflare (R2 and Stream), Flow.cl, Mercado Pago, DeepSeek API, Green API (WhatsApp), Resend, Gmail API, Sentry and WhiteNoise.
+    </p>
+
+    <h3 class="h5 mt-4">Responsive design: the user experience on a phone</h3>
+    <p class="text-muted-custom mb-0">
+        Real screenshots taken from a smartphone on the production site. The platform is designed <em>mobile-first</em>,
+        because most users buy tickets and check events from their phones.
+    </p>
+    <div class="row g-3 mt-1">
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/1-inicio.jpg' %}" alt="EntreMuchos - Home and upcoming events" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Home and event listings</small>
+        </div>
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/2-tienda.jpg' %}" alt="EntreMuchos - EMStore shop" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Store with a size finder</small>
+        </div>
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/3-chatbot-muchi.jpg' %}" alt="EntreMuchos - Muchi AI chatbot" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Muchi, the AI assistant</small>
+        </div>
+        <div class="col-6 col-md-3">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/4-carrito.jpg' %}" alt="EntreMuchos - Cart with tickets and FreePass" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Cart, VAT and monthly FreePass</small>
+        </div>
+    </div>
+
+    <h3 class="h5 mt-4">Full control panel (custom back office)</h3>
+    <p class="text-muted-custom">
+        Besides the public side, I built an internal panel that lets the team run the whole business from one place,
+        with staff-only access and functions separated by area. It replaces spreadsheets and manual processes with a single
+        system connected to the same database as the store and the tickets.
+    </p>
+    <ul class="text-muted-custom">
+        <li><strong>Inventory:</strong> store products, categories and suppliers, plus bar inventory.</li>
+        <li><strong>Events:</strong> event creation and management, active-event window, a real-time attendance panel and parking reservations.</li>
+        <li><strong>Bar tabs:</strong> a tab opened per ticket, itemized order logging, automatic closing based on ticket type and coat-check control.</li>
+        <li><strong>Point of sale:</strong> a "New Sale" module to record in-person sales at the venue, with a receipt and the associated seller.</li>
+        <li><strong>Sales:</strong> management of customers, staff and sales, with a consolidated view per event.</li>
+        <li><strong>Staff and payroll:</strong> weekly pay calculated from shifts, rates and commissions, with advances and bonuses.</li>
+        <li><strong>Finance:</strong> income, expenses and debts with installment tracking.</li>
+        <li><strong>Community and moderation:</strong> video gallery administration, a bulletin board with paid posts and a report queue.</li>
+        <li><strong>Statistics dashboard:</strong> key indicators and Chart.js charts on revenue, new and repeat customers, tickets, FreePass issued, visits, external clicks and chatbot usage.</li>
+        <li><strong>Users, profiles and roles:</strong> customer, staff and administrator profiles, with roles configurable straight from the panel, no code required. Each role defines what a person can see and do, and can have a salary assigned. Privileges follow the <strong>principle of least privilege</strong>: staff sign in with a 4-digit code and only see the information the administrator authorizes (role-based access control).</li>
+        <li><strong>Panel security:</strong> access limited to authenticated staff, with a login attempt limit (5 attempts, then a 15-minute lockout).</li>
+    </ul>
+
+    <h3 class="h5 mt-4">Administration panel and metrics</h3>
+    <div class="row g-3 mt-1">
+        <div class="col-12">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/5-menu-admin.png' %}" alt="EntreMuchos - Control panel menu" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Control panel: inventory, events, bar tabs, community, customers, staff and sales</small>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/6-dashboard-kpis.png' %}" alt="EntreMuchos - Statistics dashboard, indicators" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Dashboard: customers, repeat purchases, tickets, FreePass, visits and chatbot usage</small>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/7-dashboard-graficos.png' %}" alt="EntreMuchos - Statistics dashboard, charts" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Chart.js charts: daily revenue, customer segmentation and visits</small>
+        </div>
+    </div>
+
+    <h3 class="h5 mt-4">Cloud infrastructure</h3>
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/8-railway-deploy.png' %}" alt="Railway - Production service with MySQL and deployment from GitHub" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">Railway: app and MySQL with persistent volumes, continuous deployment from GitHub</small>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/entremuchos/9-railway-variables.png' %}" alt="Railway - Masked environment variables" loading="lazy">
+            <small class="text-muted-custom d-block mt-1">28 masked environment variables: no secret lives in the code</small>
+        </div>
+    </div>
+
+    <div class="mt-3 d-flex flex-wrap gap-2">
+        <a href="https://www.entremuchos.cl" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            View live site
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">2) Fuel Consumption Prediction for CAEX Haul Trucks (Mining)</h2>
+    <p class="text-muted-custom">A Machine Learning project that predicts the fuel level of CAEX haul trucks in order to anticipate refueling, reduce unplanned stoppages and support operational logistics in mining.</p>
+    <h3 class="h5 mt-3">What it includes</h3>
+    <ul class="text-muted-custom">
+        <li>Sensor data integration.</li>
+        <li>Exploratory analysis.</li>
+        <li>Temporal feature engineering.</li>
+        <li>Predictive modeling.</li>
+        <li>An operational prioritization layer using a traffic-light scheme.</li>
+    </ul>
+    <h3 class="h5 mt-3">Key technical contribution</h3>
+    <ul class="text-muted-custom">
+        <li>Temporal model with variables such as <em>nivel_lag_1</em> and <em>dt_min</em>.</li>
+        <li>High accuracy in short-term prediction (low MAE/RMSE and R² close to 1 in a simulated scenario).</li>
+        <li>Simulation of 30-, 60- and 90-minute horizons.</li>
+        <li>Logistics decision rules to determine which trucks should refuel first based on criticality.</li>
+    </ul>
+    <h3 class="h5 mt-3">Technologies and techniques</h3>
+    <ul class="text-muted-custom">
+        <li><strong>Tools:</strong> Python, Pandas, Scikit-learn, Matplotlib and Seaborn.</li>
+        <li>Temporal feature engineering and predictive modeling with regression.</li>
+        <li>Performance metric evaluation and visualizations to interpret the results.</li>
+        <li>Operational prioritization logic based on logistics rules.</li>
+    </ul>
+    <p class="text-muted-custom">The project demonstrates how data science can optimize critical processes in the mining industry.</p>
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/1. Portada.png' %}" alt="Mining - Project cover">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/2. Simulacion Consumo.png' %}" alt="Mining - Consumption simulation">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/3. Regla Logistica.png' %}" alt="Mining - Logistics rule">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/4. Horizontes.png' %}" alt="Mining - Prediction horizons">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/5. Estado Camiones.png' %}" alt="Mining - Truck status">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/6. Tiempo DisponibleMinutos Comb.png' %}" alt="Mining - Available fuel time">
+        </div>
+        <div class="col-12">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/7. Impacto en Producción.png' %}" alt="Mining - Impact on production">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Prediccion-de-Combustible-en-Camiones-CAEX" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            View repository on GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">3) REXFIRE Fire Extinguishers Website</h2>
+    <p class="text-muted-custom">A complete e-commerce platform for a Chilean fire extinguisher company, combining a public store with an administrative panel and an AI-powered sales assistant.</p>
+    <h3 class="h5 mt-3">Store</h3>
+    <ul class="text-muted-custom">
+        <li>Customers identify themselves by national ID number (RUT), with no password.</li>
+        <li>They browse the catalog with technical specifications, add products to the cart and complete the purchase.</li>
+        <li>PDF receipt generated automatically.</li>
+        <li>Applies 19% VAT, calculates shipping and offers free shipping above CLP $300,000.</li>
+    </ul>
+    <h3 class="h5 mt-3">Highlight: REXI (AI chatbot)</h3>
+    <ul class="text-muted-custom">
+        <li>Floating widget that recommends extinguishers based on the customer's use case and environment.</li>
+        <li>Real-time access to inventory and prices.</li>
+        <li>Add to cart directly from the chat, and quotes sent by email.</li>
+        <li>Conversation tracking with automatic abandonment detection.</li>
+        <li>WhatsApp integration via Twilio for multichannel support.</li>
+    </ul>
+    <h3 class="h5 mt-3">Administrative panel</h3>
+    <ul class="text-muted-custom">
+        <li>Full management of inventory, customers, suppliers, salespeople and sales.</li>
+        <li>Automatic 20% commissions for human salespeople.</li>
+        <li>Sales reports, chatbot conversation monitoring and order source (direct web vs. AI).</li>
+    </ul>
+    <h3 class="h5 mt-3">Technologies used</h3>
+    <ul class="text-muted-custom">
+        <li>Django 6.0.3, Python, MySQL 8.0 and Bootstrap 5.3.2.</li>
+        <li>DeepSeek API (generative AI) and Twilio (WhatsApp).</li>
+        <li>Pillow and PDF generation.</li>
+    </ul>
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/extintores rexfire/RexfireInicio.png' %}" alt="Rexfire Extinguishers - Home">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/extintores rexfire/RexfireProductos.png' %}" alt="Rexfire Extinguishers - Product catalog">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/extintores rexfire/RexfireCarrito.png' %}" alt="Rexfire Extinguishers - Shopping cart">
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/extintores rexfire/RexfireChatbot.png' %}" alt="Rexfire Extinguishers - REXI chatbot">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Extintores-Rexfire" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            View repository on GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">4) AlkeWallet Digital Wallet</h2>
+    <p class="text-muted-custom">A digital wallet web application focused on basic financial operations, with a clear user experience and flow validations for transactions.</p>
+    <h3 class="h5 mt-3">Features</h3>
+    <ul class="text-muted-custom">
+        <li>Login and session handling.</li>
+        <li>Balance lookup.</li>
+        <li>Deposits.</li>
+        <li>Sending money between contacts.</li>
+        <li>Form validation and responsive design (mobile and desktop).</li>
+    </ul>
+    <h3 class="h5 mt-3">Technologies used</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript and Bootstrap.</li>
+    </ul>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/billetera digital/1.1 Inicio.png' %}" alt="Digital Wallet - Home">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/billetera digital/2.1 Depositar.png' %}" alt="Digital Wallet - Deposit">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/billetera digital/3.1 Enviar Dinero.png' %}" alt="Digital Wallet - Send money">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/ALKE-WALLET" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            View repository on GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">5) Soa Juana Supermarket Website</h2>
+    <p class="text-muted-custom">An e-commerce-style platform for a supermarket, designed to digitalize the shopping experience, speed up the process for customers and make product management easier for the business.</p>
+    <h3 class="h5 mt-3">Features</h3>
+    <ul class="text-muted-custom">
+        <li>Category navigation.</li>
+        <li>Detailed product views.</li>
+        <li>Shopping cart management.</li>
+        <li>Administrative panel (CRUD) for the product catalog, with validations and responsive design.</li>
+    </ul>
+    <h3 class="h5 mt-3">Technologies used</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript and Bootstrap.</li>
+    </ul>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/supermercado/1.0.Inicio.png' %}" alt="Supermarket - Home">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/supermercado/2.1 Productos listado.png' %}" alt="Supermarket - Product listing">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/supermercado/4.1. Carrito.png' %}" alt="Supermarket - Shopping cart">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Supermercado-Soa-Juana" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            View repository on GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">6) Adóptame.cl Website</h2>
+    <p class="text-muted-custom">A website dedicated to responsible pet adoption, connecting people with stray pets and promoting community support.</p>
+    <h3 class="h5 mt-3">Features</h3>
+    <ul class="text-muted-custom">
+        <li>Sections for adoptions, foster homes, donations and a charity store.</li>
+        <li>Pet profile pages and foster home management.</li>
+        <li>Donation form integration.</li>
+        <li>Administration panel (CRUD) to manage records and content, with validations and responsive design.</li>
+    </ul>
+    <h3 class="h5 mt-3">Technologies used</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript and Bootstrap.</li>
+    </ul>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/adoptame/1.1 Inicio.png' %}" alt="Adóptame - Home">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/adoptame/2.1 Adopciones.png' %}" alt="Adóptame - Adoptions">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/adoptame/4.1 Donaciones.png' %}" alt="Adóptame - Donations">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Adoptame.cl" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            View repository on GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">7) Ticket Sales Website</h2>
+    <p class="text-muted-custom">A platform to promote and sell event tickets, designed to speed up the purchase and improve the end-user experience.</p>
+    <h3 class="h5 mt-3">Features</h3>
+    <ul class="text-muted-custom">
+        <li>Event listing browsing and a detail page for each event.</li>
+        <li>Shopping cart management.</li>
+        <li>Benefits for logged-in users.</li>
+        <li>Responsive design for mobile and desktop.</li>
+    </ul>
+    <h3 class="h5 mt-3">Technologies used</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript and Bootstrap.</li>
+    </ul>
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/tickets/1.1 Inicio.png' %}" alt="Tickets - Home">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/tickets/2.1 Eventos.png' %}" alt="Tickets - Events">
+        </div>
+        <div class="col-md-4">
+            <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/tickets/3.1 Carrito.png' %}" alt="Tickets - Cart">
+        </div>
+    </div>
+    <div class="mt-3">
+        <a href="https://github.com/simoncastillo1712/Tickets.cl" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            View repository on GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3">8) Creative Project:</h2>
+    <h5>Costume Design for a Music Video</h5>
+    <p class="text-muted-custom">
+        I took part in designing the costumes for the audiovisual production of the music video
+        <strong>"Niña de Mis Ojos"</strong> by emerging urban music artist <strong>Aioris</strong>.<br>
+        This work was carried out in <strong>2024</strong>, aligning the aesthetic proposal with the
+        artist's creative direction and requests to reinforce her visual identity.
+    </p>
+    <p class="text-muted-custom">
+        <strong>Artist:</strong> Aioris <br>
+        <strong>Year:</strong> 2024 <br>
+        <strong>Song:</strong> Niña de Mis Ojos <br>
+        <strong>Music style:</strong> Urban
+    </p>
+    <div class="ratio ratio-16x9 mt-3 mb-3">
+        <iframe
+            src="https://www.youtube.com/embed/rC6gaTsugB8?rel=0&playsinline=1"
+            title="Aioris - Niña de Mis Ojos (Official Music Video)"
+            frameborder="0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p class="text-muted-custom mb-0">
+        <a href="https://www.youtube.com/watch?v=rC6gaTsugB8&list=RDrC6gaTsugB8&start_radio=1"
+           target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            Watch the video on YouTube
+        </a>
+    </p>
+</section>
+
+<section class="section-card">
+    <h2 class="h3 mb-3">Want to know more about me?</h2>
+    <p class="text-muted-custom mb-2">
+        You can browse these and other projects on my GitHub profile, including the source code and the evolution of each one.
+    </p>
+    <p class="text-muted-custom mb-3">
+       You can also download my CV as a PDF for a complete overview of my experience, skills and professional background.
+    </p>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            <img src="{% static 'img/logo github.png' %}" alt="" class="social-ico social-ico--gh">Go to my GitHub
+        </a>
+        {% if cv_url %}<a href="{{ cv_url }}" download class="btn btn-accent">
+            Download CV
+        </a>{% endif %}
+    </div>
+</section>
+{% endblock %}

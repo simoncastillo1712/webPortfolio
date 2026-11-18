@@ -52,8 +52,76 @@ PACKS = {
 FEATURES_POR_ID = {f['id']: f for f in FEATURES}
 
 
-def catalogo():
-    return {'features': FEATURES, 'packs': PACKS, 'implementacion': IMPLEMENTACION}
+# Textos en inglés del catálogo, por id de funcionalidad.
+FEATURES_EN = {
+    'cms':           ('Content & administration', 'CMS panel',                  'Visual editor so the client can update content without touching code'),
+    'blog':          ('Content & administration', 'Blog / news',                'Posts with categories, tags and basic SEO'),
+    'gallery':       ('Content & administration', 'Media gallery',              'Optimized images and videos with a file manager'),
+    'multilang':     ('Content & administration', 'Multi-language (i18n)',      'Site versions in more than one language with dynamic switching'),
+    'cart':          ('E-commerce & payments',    'Shopping cart',              'Product, stock and order management'),
+    'payment':       ('E-commerce & payments',    'Payment gateway (API)',      'Integration with Transbank, MercadoPago, Stripe or others'),
+    'clientportal':  ('E-commerce & payments',    'Customer portal',            'Login, purchase history and order tracking'),
+    'coupons':       ('E-commerce & payments',    'Coupons & discounts',        'Promo codes and dynamic pricing'),
+    'booking':       ('Bookings & scheduling',    'Booking system',             'Calendar with availability and automatic confirmation'),
+    'recurring':     ('Bookings & scheduling',    'Recurring payments / membership', 'Automatic monthly billing for subscribers'),
+    'chatbot':       ('Automation & AI',          'AI chatbot',                 'Conversational assistant trained on your business information'),
+    'smartform':     ('Automation & AI',          'Smart forms',                'Conditional logic, validation and delivery to CRM or email'),
+    'notifications': ('Automation & AI',          'Automatic notifications',    'Automated emails and/or WhatsApp messages triggered by site events'),
+    'analytics':     ('Analytics & SEO',          'Analytics dashboard',        'Visits, conversions and key business metrics'),
+    'seo':           ('Analytics & SEO',          'Technical SEO',              'Meta tags, sitemap, Schema.org and page speed'),
+    'reports':       ('Analytics & SEO',          'Monthly reports',            'Automated PDF report summarizing traffic and metrics'),
+    'hosting':       ('Infrastructure',           'Managed hosting + domain',   'Server management, SSL and domain renewal'),
+    'support':       ('Infrastructure',           'Support & maintenance',      'Bug fixes, updates and up to 3 hours of support per month'),
+    'backup':        ('Infrastructure',           'Automatic backup',           'Daily backups with restoration within 24h'),
+}
+
+PACKS_EN = {
+    'vitrina': 'Small business',
+    'ecommerce': 'E-commerce',
+    'restaurante': 'Restaurant',
+    'clinica': 'Clinic / Medical',
+    'gym': 'Gym / Sports',
+    'inmobiliaria': 'Real estate',
+}
+
+# Textos de la interfaz que usa calculadora.js.
+UI = {
+    'es': {
+        'mes': '/mes',
+        'vacio': 'Ninguna feature seleccionada aún',
+        'hint_vacio': 'Selecciona al menos una funcionalidad para solicitar tu presupuesto',
+        'hint_ok': 'Respondo en menos de 24 horas',
+        'enviando': 'Enviando...',
+        'enviar': 'Enviar solicitud',
+        'error_generico': 'No se pudo enviar la solicitud. Intenta nuevamente.',
+        'error_red': 'No se pudo enviar la solicitud. Revisa tu conexión e intenta nuevamente.',
+        'locale': 'es-CL',
+    },
+    'en': {
+        'mes': '/mo',
+        'vacio': 'No features selected yet',
+        'hint_vacio': 'Select at least one feature to request your quote',
+        'hint_ok': 'I reply within 24 hours',
+        'enviando': 'Sending...',
+        'enviar': 'Send request',
+        'error_generico': 'The request could not be sent. Please try again.',
+        'error_red': 'The request could not be sent. Check your connection and try again.',
+        'locale': 'en-US',
+    },
+}
+
+
+def catalogo(lang='es'):
+    """Catálogo listo para el navegador, con textos en el idioma pedido."""
+    if lang == 'en':
+        features = [
+            {**f, 'cat': FEATURES_EN[f['id']][0], 'name': FEATURES_EN[f['id']][1], 'desc': FEATURES_EN[f['id']][2]}
+            for f in FEATURES
+        ]
+        packs = {k: {**v, 'label': PACKS_EN[k]} for k, v in PACKS.items()}
+    else:
+        features, packs = FEATURES, PACKS
+    return {'features': features, 'packs': packs, 'implementacion': IMPLEMENTACION, 'ui': UI.get(lang, UI['es'])}
 
 
 def calcular(ids):

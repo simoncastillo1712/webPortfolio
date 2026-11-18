@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<section class="section-card mb-4">
+    <h1 class="section-title">Contacto</h1>
+    <p class="text-muted-custom mb-0">
+        Do you have a job opportunity or a project in mind?<br>
+        I'm available to collaborate on data analysis, web development and results-oriented business solutions.
+    </p>
+</section>
+
+<section class="section-card mb-4">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <h2 class="h4 mb-3">Contact information</h2>
+            <ul class="list-unstyled text-muted-custom">
+                <li class="mb-2"><strong>Email:</strong> <a href="mailto:simon.castillo.a@gmail.com" class="text-decoration-none">simon.castillo.a@gmail.com</a></li>
+                <li class="mb-2"><strong>Phone:</strong> <a href="tel:+56958883107" class="text-decoration-none">+56 9 5888 3107</a></li>
+                <li class="mb-2"><img src="{% static 'img/logo linkedin.png' %}" alt="" class="social-ico social-ico--li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="text-decoration-none">linkedin.com/in/simón-castillo-armijo</a></li>
+                <li class="mb-2"><img src="{% static 'img/logo github.png' %}" alt="" class="social-ico social-ico--gh"><strong>GitHub:</strong> <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="text-decoration-none">github.com/simoncastillo1712</a></li>
+                <li class="mb-2"><strong>Location:</strong> Santiago, Chile</li>
+            </ul>
+            <div class="p-3 rounded-3 border border-secondary-subtle text-muted-custom mt-3">
+                <p class="mb-2">Work mode: Remote or hybrid.</p>
+                <p class="mb-2">Hours: Monday to Friday, 9:00 AM–6:00 PM (CLT, UTC-4).</p>
+                <p class="mb-0">Response time: within 24 business hours.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="h4 mb-3">Send me a message</h2>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} mb-3" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nombre" class="form-label text-muted-custom">Full name</label>
+                    <input type="text" class="form-control bg-transparent text-light border-secondary" id="nombre" name="nombre" required placeholder="Your name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label text-muted-custom">Email address</label>
+                    <input type="email" class="form-control bg-transparent text-light border-secondary" id="email" name="email" required placeholder="you@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="asunto" class="form-label text-muted-custom">Subject</label>
+                    <input type="text" class="form-control bg-transparent text-light border-secondary" id="asunto" name="asunto" required placeholder="How can I help you?">
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label text-muted-custom">Message</label>
+                    <textarea class="form-control bg-transparent text-light border-secondary" id="mensaje" name="mensaje" rows="5" required placeholder="Tell me about your project or opportunity..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-accent w-100">Send message</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

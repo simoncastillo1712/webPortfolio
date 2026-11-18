@@ -1,0 +1,259 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Data Scientist | Simón Castillo A.{% endblock %}
+
+{% block contenido %}
+<style>
+    .ds-hero { position: relative; overflow: hidden; }
+    .ds-hero::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background-image: radial-gradient(rgba(71,191,255,.18) 1px, transparent 1px);
+        background-size: 22px 22px;
+        mask-image: linear-gradient(120deg, transparent 30%, #000 100%);
+        -webkit-mask-image: linear-gradient(120deg, transparent 30%, #000 100%);
+    }
+    .ds-hero > * { position: relative; z-index: 1; }
+    .ds-stat { text-align: center; padding: 1rem .5rem; }
+    .ds-stat__num { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+    .ds-stat__lbl { font-size: .8rem; color: var(--text-muted); }
+    .ds-icon { font-size: 1.6rem; color: var(--accent); }
+    .algo-row { display: flex; justify-content: space-between; align-items: center; gap: .75rem;
+        padding: .55rem 0; border-bottom: 1px solid rgba(71,191,255,.12); font-size: .9rem; }
+    .algo-row:last-child { border-bottom: none; }
+    .algo-row small { color: var(--text-muted); display: block; font-size: .76rem; }
+    .code-block { background: #060e1b; border: 1px solid var(--border); border-radius: .75rem;
+        padding: 1rem; font-size: .78rem; color: #cfe8ff; overflow-x: auto; margin: 0; }
+    .code-block .c { color: #6f8fb0; }
+    .code-block .k { color: #47bfff; }
+    .code-block .s { color: #7df2c6; }
+</style>
+
+<!-- HERO -->
+<section class="section-card ds-hero mb-4">
+    <span class="badge rounded-pill px-3 py-2 fw-semibold mb-3"
+        style="background:rgba(25,198,100,.18);border:1px solid rgba(25,198,100,.55);color:#5dffa0;">
+        ● Open to internships and a first Data Science role
+    </span>
+    <p class="text-uppercase text-info fw-semibold mb-2" style="font-size:.8rem;">Data Science</p>
+    <h1 class="fw-bold mb-3" style="font-size:clamp(1.6rem,5vw,2.7rem);line-height:1.15;">
+        I turn data into <span style="color:var(--accent);">decisions</span>:<br>
+        from exploration to predictive models
+    </h1>
+    <p class="text-muted-custom mb-4" style="max-width:720px;">
+        More than 10 years in banking taught me how real decisions are made with numbers. Today I combine that with
+        Python, Machine Learning and visualization to solve operational problems, such as predicting the fuel level of
+        CAEX haul trucks in mining and prioritizing which vehicle should refuel first.
+    </p>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <span class="badge rounded-pill badge-tech px-3 py-2">Python</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Pandas · NumPy</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Scikit-learn</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">SQL</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Power BI</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">AWS</span>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="#caex" class="btn btn-accent btn-lg">See featured case</a>
+        {% if cv_url %}<a href="{{ cv_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">Download CV</a>{% endif %}
+        <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Get in touch</a>
+    </div>
+</section>
+
+<!-- WHAT I CAN DO -->
+<section class="section-card mb-4">
+    <h2 class="section-title">What I can do for your team</h2>
+    <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-database-check ds-icon"></i>
+                <h3 class="h5 mt-2">Data cleaning and exploration (EDA)</h3>
+                <p class="text-muted-custom mb-0">I integrate data sources (SQL JOINs, CSV files, sensors), handle nulls and outliers, and uncover patterns before modeling.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-graph-up-arrow ds-icon"></i>
+                <h3 class="h5 mt-2">Predictive models</h3>
+                <p class="text-muted-custom mb-0">Regression, classification and time series with sound validation (temporal split, MAE/RMSE/R² metrics).</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-diagram-3 ds-icon"></i>
+                <h3 class="h5 mt-2">From prediction to decision</h3>
+                <p class="text-muted-custom mb-0">Prioritization rules and scenario simulation so the model translates into operational actions.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-bar-chart-line ds-icon"></i>
+                <h3 class="h5 mt-2">Visualization and storytelling</h3>
+                <p class="text-muted-custom mb-0">Power BI dashboards and Matplotlib/Seaborn charts designed for non-technical audiences.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-cloud-check ds-icon"></i>
+                <h3 class="h5 mt-2">Data in the cloud</h3>
+                <p class="text-muted-custom mb-0">Data storage and processing on AWS, with certified training in the data lifecycle.</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <i class="bi bi-shield-check ds-icon"></i>
+                <h3 class="h5 mt-2">Data ethics and governance</h3>
+                <p class="text-muted-custom mb-0">Responsible handling of information and honest communication of a model's limits.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ALGORITHMS -->
+<section class="section-card mb-4">
+    <h2 class="section-title mb-1">Algorithms and techniques I work with</h2>
+    <div class="row g-3">
+        <div class="col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <h3 class="h6 text-info mb-2">Regression and prediction</h3>
+                <div class="algo-row"><div>Linear regression<small>Fuel level prediction</small></div></div>
+                <div class="algo-row"><div>Lasso (L1 regularization)<small>Feature selection</small></div></div>
+                <div class="algo-row"><div>Random Forest Regressor<small>Comparison against the linear model</small></div></div>
+                <div class="algo-row"><div>Time series<small>Lags, <em>dt_min</em>, temporal split</small></div></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <h3 class="h6 text-info mb-2">Classification and data mining</h3>
+                <div class="algo-row"><div>Logistic regression<small>Binary classification</small></div></div>
+                <div class="algo-row"><div>Decision trees · KNN<small>Interpretable baseline models</small></div></div>
+                <div class="algo-row"><div>K-Means · Clustering<small>Unsupervised segmentation</small></div></div>
+                <div class="algo-row"><div>Decision rules (traffic light)<small>Prioritization by criticality</small></div></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="p-3 rounded-3 border h-100">
+                <h3 class="h6 text-info mb-2">AI and optimization</h3>
+                <div class="algo-row"><div>Neural networks<small>Fundamentals and training</small></div></div>
+                <div class="algo-row"><div>Nonlinear optimization<small>Gradient descent</small></div></div>
+                <div class="algo-row"><div>Predictive and prescriptive analytics<small>From forecast to action</small></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-3 mt-1">
+        <div class="col-12">
+            <div class="p-3 rounded-3 border">
+                <h3 class="h6 text-info mb-2">Metrics and best practices</h3>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge rounded-pill badge-tech px-3 py-2">MAE · RMSE · R²</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Temporal train/test split</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Data leakage prevention</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Feature engineering</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Statistics and probability</span>
+                    <span class="badge rounded-pill badge-tech px-3 py-2">Results visualization</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CAEX CASE -->
+<section class="section-card mb-4" id="caex">
+    <span class="badge mb-2" style="background:#19c6c8;color:#0d1b2e;font-size:.8rem;padding:.35rem .8rem;border-radius:2rem;">
+        Featured case · Mining 4.0
+    </span>
+    <h2 class="section-title mb-2">Fuel prediction for CAEX haul trucks</h2>
+    <p class="text-muted-custom">
+        <strong>Problem:</strong> in mining, a truck that runs out of fuel mid-cycle halts production.
+        <strong>Goal:</strong> anticipate each truck's fuel level and decide which one should refuel first.
+        Project built with sensor data during the Mining 4.0 bootcamp (BHP · UNAB · SENCE).
+    </p>
+
+    <div class="row g-3 mb-3">
+        <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">1.84 L</div><div class="ds-stat__lbl">MAE on test set</div></div></div>
+        <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">2.56 L</div><div class="ds-stat__lbl">RMSE on test set</div></div></div>
+        <div class="col-md-4 col-6"><div class="ds-stat border rounded-3"><div class="ds-stat__num">30·60·90</div><div class="ds-stat__lbl">simulated horizon (minutes)</div></div></div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <h3 class="h5 text-info">How I solved it</h3>
+            <ol class="text-muted-custom ps-3">
+                <li class="mb-1"><strong>Integration:</strong> JOIN of the fuel sensors with the equipment metadata.</li>
+                <li class="mb-1"><strong>Temporal feature engineering:</strong> <em>nivel_lag_1</em> (previous reading) and <em>dt_min</em> (minutes between readings).</li>
+                <li class="mb-1"><strong>Honest validation:</strong> 80/20 temporal split <em>without shuffling</em>, so future data never leaks into training.</li>
+                <li class="mb-1"><strong>Models:</strong> Linear regression as the baseline, compared with Lasso and Random Forest.</li>
+                <li class="mb-1"><strong>Decision:</strong> 30/60/90-minute simulation and a criticality traffic light to rank refueling order.</li>
+            </ol>
+        </div>
+        <div class="col-lg-6">
+            <h3 class="h5 text-info">Simplified outline of the approach</h3>
+<pre class="code-block"><span class="c"># Temporal features per vehicle</span>
+df = df.sort_values([<span class="s">"equipo_id"</span>, <span class="s">"timestamp"</span>])
+df[<span class="s">"nivel_lag_1"</span>] = df.groupby(<span class="s">"equipo_id"</span>)[<span class="s">"nivel"</span>].shift(<span class="k">1</span>)
+df[<span class="s">"dt_min"</span>] = df.groupby(<span class="s">"equipo_id"</span>)[<span class="s">"timestamp"</span>] \
+    .diff().dt.total_seconds() / <span class="k">60</span>
+
+<span class="c"># Temporal split (no shuffle)</span>
+cut = <span class="k">int</span>(<span class="k">len</span>(df) * <span class="k">0.8</span>)
+train, test = df.iloc[:cut], df.iloc[cut:]
+
+model = LinearRegression().fit(train[FEATS], train[<span class="s">"nivel"</span>])
+pred = model.predict(test[FEATS])
+<span class="k">print</span>(mean_absolute_error(test[<span class="s">"nivel"</span>], pred))
+
+<span class="c"># Traffic light: remaining autonomy in minutes</span>
+<span class="k">def</span> traffic_light(minutes_left):
+    <span class="k">if</span> minutes_left &lt; <span class="k">30</span>: <span class="k">return</span> <span class="s">"RED"</span>
+    <span class="k">if</span> minutes_left &lt; <span class="k">90</span>: <span class="k">return</span> <span class="s">"YELLOW"</span>
+    <span class="k">return</span> <span class="s">"GREEN"</span></pre>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-2">
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/2. Simulacion Consumo.png' %}" alt="Fuel consumption simulation" loading="lazy"></div>
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/5. Estado Camiones.png' %}" alt="CAEX truck status" loading="lazy"></div>
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/4. Horizontes.png' %}" alt="Prediction horizons" loading="lazy"></div>
+        <div class="col-md-6"><img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/7. Impacto en Producción.png' %}" alt="Impact on production" loading="lazy"></div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 mt-3">
+        <a href="https://github.com/simoncastillo1712/Prediccion-de-Combustible-en-Camiones-CAEX" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+            <i class="bi bi-github me-1"></i>View repository and notebook
+        </a>
+        <a href="{% url 'proyectos' %}" class="btn btn-outline-light">View all projects</a>
+    </div>
+</section>
+
+<!-- STACK -->
+<section class="section-card mb-4">
+    <h2 class="section-title">Tools</h2>
+    <div class="row g-3">
+        <div class="col-md-4"><div class="p-3 rounded-3 border h-100">
+            <h3 class="h6 text-info">Analysis and modeling</h3>
+            <p class="text-muted-custom mb-0">Python · Pandas · NumPy · Scikit-learn · Jupyter / Google Colab · Statistics</p>
+        </div></div>
+        <div class="col-md-4"><div class="p-3 rounded-3 border h-100">
+            <h3 class="h6 text-info">Visualization and BI</h3>
+            <p class="text-muted-custom mb-0">Matplotlib · Seaborn · Power BI · KPI tracking · data storytelling</p>
+        </div></div>
+        <div class="col-md-4"><div class="p-3 rounded-3 border h-100">
+            <h3 class="h6 text-info">Data and engineering</h3>
+            <p class="text-muted-custom mb-0">SQL · AWS · Django · APIs · Git and GitHub · deploying data-driven applications</p>
+        </div></div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section-card text-center">
+    <h2 class="section-title">Looking for someone who understands both the business and the data?</h2>
+    <p class="text-muted-custom mb-4">I'm available for internships, projects and first roles in data analysis and Machine Learning.</p>
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <a href="{% url 'contacto' %}" class="btn btn-accent btn-lg">Let's talk</a>
+        <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg"><img src="{% static 'img/logo linkedin.png' %}" alt="" class="social-ico social-ico--li">LinkedIn</a>
+        <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg"><img src="{% static 'img/logo github.png' %}" alt="" class="social-ico social-ico--gh">GitHub</a>
+    </div>
+</section>
+{% endblock %}
+
+

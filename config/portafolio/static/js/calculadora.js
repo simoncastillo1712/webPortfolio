@@ -9,12 +9,13 @@ const CATALOGO = JSON.parse(document.getElementById('catalogo-data').textContent
 const FEATURES = CATALOGO.features;
 const PACKS = CATALOGO.packs;
 const IMPLEMENTACION = CATALOGO.implementacion;
+const UI = CATALOGO.ui;  // textos de la interfaz en el idioma de la página
 
 const selected = new Set();
 
 /* ---------- helpers ---------- */
 function fmt(n) {
-  return '$' + n.toLocaleString('es-CL');
+  return '$' + n.toLocaleString(UI.locale);
 }
 
 function packTotal(key) {
@@ -48,7 +49,7 @@ function renderFeatures() {
               <p class="calc-feature-row__desc">${f.desc}</p>
             </div>
           </div>
-          <span class="calc-feature-row__price">${fmt(f.price)}/mes</span>
+          <span class="calc-feature-row__price">${fmt(f.price)}${UI.mes}</span>
         </div>`;
     }).join('');
 
@@ -64,7 +65,7 @@ function renderPacks() {
   container.innerHTML = Object.entries(PACKS).map(([key, pack]) => `
     <button class="calc-pack-btn" onclick="loadPack('${key}')">
       <span class="calc-pack-btn__name">${pack.label}</span>
-      <span class="calc-pack-btn__price">${fmt(packTotal(key))}/mes</span>
+      <span class="calc-pack-btn__price">${fmt(packTotal(key))}${UI.mes}</span>
     </button>
   `).join('');
 }
@@ -81,7 +82,7 @@ function updatePanel() {
 
   const list = document.getElementById('selected-list');
   list.innerHTML = items.length === 0
-    ? '<li class="calc-empty-msg">Ninguna feature seleccionada aún</li>'
+    ? `<li class="calc-empty-msg">${UI.vacio}</li>`
     : items.map(f => `
         <li class="calc-selected-item">
           <span>${f.name}</span>
@@ -92,8 +93,8 @@ function updatePanel() {
   if (btn) btn.disabled = items.length === 0;
   const hint = document.getElementById('cta-hint');
   if (hint) hint.textContent = items.length === 0
-    ? 'Selecciona al menos una funcionalidad para solicitar tu presupuesto'
-    : 'Respondo en menos de 24 horas';
+    ? UI.hint_vacio
+    : UI.hint_ok;
 }
 
 /* ---------- acciones ---------- */
@@ -124,7 +125,7 @@ function renderModalSummary() {
   document.getElementById('modal-list').innerHTML = items.map(f => `
     <li class="calc-selected-item">
       <span>${f.name}</span>
-      <span class="calc-selected-item__price">${fmt(f.price)}/mes</span>
+      <span class="calc-selected-item__price">${fmt(f.price)}${UI.mes}</span>
     </li>`).join('');
   document.getElementById('modal-impl').textContent = fmt(IMPLEMENTACION);
   document.getElementById('modal-monthly').textContent = fmt(monthly);
@@ -151,7 +152,7 @@ function initModal() {
     selected.forEach(id => data.append('features', id));
 
     sendBtn.disabled = true;
-    sendBtn.textContent = 'Enviando...';
+    sendBtn.textContent = UI.enviando;
     try {
       const res = await fetch(form.action, {
         method: 'POST',
@@ -164,15 +165,15 @@ function initModal() {
         document.getElementById('modal-formulario').hidden = true;
         document.getElementById('modal-exito').hidden = false;
       } else {
-        errorBox.textContent = json.error || 'No se pudo enviar la solicitud. Intenta nuevamente.';
+        errorBox.textContent = json.error || UI.error_generico;
         errorBox.hidden = false;
       }
     } catch (err) {
-      errorBox.textContent = 'No se pudo enviar la solicitud. Revisa tu conexión e intenta nuevamente.';
+      errorBox.textContent = UI.error_red;
       errorBox.hidden = false;
     } finally {
       sendBtn.disabled = false;
-      sendBtn.textContent = 'Enviar solicitud';
+      sendBtn.textContent = UI.enviar;
     }
   });
 }

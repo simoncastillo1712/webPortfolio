@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<section class="section-card mb-4 position-relative">
+    {% if cv_url %}
+    <a href="{{ cv_url }}" target="_blank" rel="noopener noreferrer"
+        class="btn btn-accent position-absolute" style="top:1.5rem; right:1.5rem;">
+        <i class="bi bi-download me-1"></i>Download CV
+    </a>
+    {% endif %}
+    <div class="row align-items-center g-4 mb-4">
+        <div class="col-auto">
+            <div style="width:120px; height:120px; border-radius:50%; overflow:hidden; border: 3px solid var(--accent); box-shadow: 0 0 24px rgba(25,198,200,0.4);">
+                <img src="{% static 'img/perfil.jpg' %}" alt="Simón Castillo"
+                    style="width:100%; height:100%; object-fit:cover;"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(25,198,200,0.1);font-size:2.5rem;\'>👤</div>'">
+            </div>
+        </div>
+        <div>
+            <h1 class="section-title mb-1">About me</h1>
+            <p class="text-muted-custom mb-0">Data Scientist · Web Developer · Designer · Santiago, Chile</p>
+        </div>
+    </div>
+    <p class="text-muted-custom">
+        I'm <strong>Simón Adrián Castillo Armijo</strong>, a Higher-Level Technician in Data Analysis and a future Data Scientist.
+    </p>
+    <p class="text-muted-custom">
+        I bring more than 10 years of professional experience in banking and a career shift toward data analytics and
+        web development, with a focus on results-oriented solutions, professional design and process optimization.
+    </p>
+    <p class="text-muted-custom mb-2">My areas of expertise:</p>
+    <ul class="text-muted-custom">
+        <li>Exploratory data analysis and modeling.</li>
+        <li>Power BI visualization and KPI tracking.</li>
+        <li>Process optimization.</li>
+        <li>Web development: clean, functional interfaces focused on the user experience.</li>
+    </ul>
+    <p class="text-muted-custom">
+        My approach combines analytical thinking, business vision and technical execution.
+    </p>
+    <p class="text-muted-custom mb-0">
+        <strong>Location:</strong> Santiago, Chile <br>
+        <strong>Languages:</strong> Native Spanish, advanced English (TOEFL 100/120), intermediate French and Portuguese.
+    </p>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3 mb-3">Education and training</h2>
+    <ul class="text-muted-custom mb-0">
+        <li>Higher-Level Technician in Data Analysis – AIEP – Graduated in 2026.</li>
+        <li>Engineering Degree in Data Science (in progress) – AIEP.</li>
+        <li>Data Analysis for Mining 4.0 Bootcamp (BHP – UNAB – SENCE – RockStars) (2025).</li>
+        <li>Full Stack Web Application Development in Python Bootcamp (SENCE / Alkemy) (2025-2026).</li>
+        <li>Courses in Data Science, Power BI, Machine Learning with Python Essentials and Business Analytics Essentials (2023).</li>
+        <li>Fashion Design – DUOC UC – Graduated in 2011.</li>
+    </ul>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3 mb-3">Featured professional experience</h2>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="exp-card p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <i class="bi bi-calendar-event" style="font-size:2rem;color:var(--accent);"></i>
+                    <h3 class="h5 mb-0">Producción de Eventos EM (2023 – present)</h3>
+                </div>
+                <h5>Developer and Data Analyst</h5>
+                <ul class="text-muted-custom">
+                    <li>Migrated the company's operations from Excel spreadsheets to a <strong>custom-built web CRM platform</strong> that centralizes customers, events, sales and inventory.</li>
+                    <li>Designed the data model and the relational database, and built the platform with Python and Django.</li>
+                    <li>Analyze sales, attendance and cost data to support pricing, event scheduling and purchasing decisions, using interactive dashboards.</li>
+                    <li>Cut about <strong>9 hours per week</strong> of manual work.</li>
+                    <li>Reduced data-entry errors by automating payroll, commissions, schedules and payments.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="exp-card p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <i class="bi bi-gear-wide-connected" style="font-size:2rem;color:var(--accent);"></i>
+                    <h3 class="h5 mb-0">Maquinaria Industrial Ltda. – MQI (2026)</h3>
+                </div>
+                <h5>Professional Internship · Data and Web Development</h5>
+                <p class="text-muted-custom mb-2" style="font-size:.93rem;">Fluid-displacement pump company.</p>
+                <ul class="text-muted-custom">
+                    <li>Designed and implemented the <strong>full ETL process</strong> to integrate and clean the company's operational data.</li>
+                    <li>Automated data flows for internal reports with Python and SQL.</li>
+                    <li>Built a knowledge base with a chatbot, integrated into the corporate website, for technical product questions.</li>
+                    <li>Implemented an interactive georeferenced map with the Google Maps API and Plus Codes to visualize customers and service points.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="exp-card p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <img src="{% static 'img/BCHlogo.png' %}" alt="Banco de Chile" style="height:40px; object-fit:contain; filter:brightness(1.1);">
+                    <h3 class="h5 mb-0">Banco de Chile (2019 – 2024)</h3>
+                </div>
+                <h5>Multi-Segment Retail Banking Executive</h5>
+                <ul class="text-muted-custom">
+                    <li>Managed a client portfolio and analyzed financial indicators.</li>
+                    <li>Identified business opportunities and analyzed portfolio performance.</li>
+                    <li>Assessed risk and met commercial targets.</li>
+                    <li>Optimized processes in coordination with multidisciplinary teams.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="exp-card p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <img src="{% static 'img/BCIlogo.png' %}" alt="Banco BCI" style="height:40px; object-fit:contain; filter:brightness(1.1);">
+                    <h3 class="h5 mb-0">Banco BCI (2015 – 2019)</h3>
+                </div>
+                <h5>Account Executive</h5>
+                <ul class="text-muted-custom">
+                    <li>Portfolio management, sales and metrics-driven decision making.</li>
+                    <li>Achieved sustained portfolio growth.</li>
+                    <li>Exceeded annual sales targets (<strong>104%</strong> in the first year).</li>
+                    <li>Improved my clients' experience by <strong>20%</strong>.</li>
+                    <li>Internal “BCI Reconoce” award for outstanding performance.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="exp-card p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <img src="{% static 'img/BBVAlogo.jpg' %}" alt="Banco BBVA" style="height:40px; object-fit:contain; filter:brightness(1.1);">
+                    <h3 class="h5 mb-0">Banco BBVA (2013 – 2015)</h3>
+                </div>
+                <h5>Service Quality Analyst</h5>
+                <ul class="text-muted-custom">
+                    <li>Analyzed the service quality of the phone-banking agents.</li>
+                    <li>Reviewed performance indicators and identified areas for improvement.</li>
+                    <li>Worked with the training teams to improve the customer experience.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="exp-card p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <img src="{% static 'img/texoralogo.jfif' %}" alt="Texora S.A." style="height:40px; object-fit:contain; filter:brightness(1.1);">
+                    <h3 class="h5 mb-0">Texora S.A. (2011 – 2013)</h3>
+                </div>
+                <h5>Designer</h5>
+                <ul class="text-muted-custom">
+                    <li>Created the Design department and the quality control area at a corporate apparel company.</li>
+                    <li>Improved documentation to broaden the product range.</li>
+                    <li>Better customer experience.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3 mb-3">Technical skills</h2>
+    <div>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Python</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Django</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">SQL</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">MySQL</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">ETL</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Power BI</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Machine Learning</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">HTML5</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">CSS3</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">JavaScript</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Bootstrap</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Git & GitHub</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Visual Studio Code</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Jupyter</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">n8n</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Microsoft 365</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Adobe Creative Cloud</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Canva</span>
+        <span class="badge rounded-pill badge-tech px-3 py-2">Google Workspace</span>
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="h3 mb-3">Currently learning</h2>
+    <p class="text-muted-custom mb-3">Technologies and tools I'm specializing in this year:</p>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.5rem;">⚛️</div>
+                <h3 class="h6 fw-bold">React</h3>
+                <p class="text-muted-custom mb-0" style="font-size:.9rem;">Building dynamic interfaces with reusable components.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.5rem;">🟢</div>
+                <h3 class="h6 fw-bold">Node.js</h3>
+                <p class="text-muted-custom mb-0" style="font-size:.9rem;">JavaScript backend and REST API development.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.5rem;">🐳</div>
+                <h3 class="h6 fw-bold">Docker</h3>
+                <p class="text-muted-custom mb-0" style="font-size:.9rem;">Containerizing applications for reproducible deployments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-card">
+    <h2 class="h3 mb-3">How I work</h2>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <h3 class="h5">Analysis</h3>
+                <p class="text-muted-custom mb-0">I define objectives, critical variables and success metrics for each
+                    solution.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <h3 class="h5">Implementation</h3>
+                <p class="text-muted-custom mb-0">Iterative development focused on technical quality, usability and
+                    business impact.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <h3 class="h5">Continuous improvement</h3>
+                <p class="text-muted-custom mb-0">I evaluate results with indicators to optimize processes and
+                    performance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

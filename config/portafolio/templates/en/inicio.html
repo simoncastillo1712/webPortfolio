@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<section class="section-card mb-4">
+    <div class="row align-items-center g-4">
+
+        <!-- Foto: primero en mobile (order-1), segundo en desktop (order-lg-2) -->
+        <div class="col-lg-4 order-1 order-lg-2 text-center">
+            <div class="d-flex flex-column align-items-center gap-3 py-2">
+                <div style="width:130px; height:130px; border-radius:50%; overflow:hidden; border: 3px solid var(--accent); box-shadow: 0 0 24px rgba(25,198,200,0.4); flex-shrink:0;">
+                    <img src="{% static 'img/perfil.jpg' %}" alt="Simón Castillo"
+                        style="width:100%; height:100%; object-fit:cover;"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(25,198,200,0.1);font-size:3rem;\'>👤</div>'">
+                </div>
+                <div>
+                    <h2 class="h5 mb-1">Simón Castillo A.</h2>
+                    <p class="text-muted-custom mb-0" style="font-size:.8rem;">Data Scientist · Developer · Designer</p>
+                    <p class="text-muted-custom mb-0" style="font-size:.85rem;">Santiago, Chile</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="https://github.com/simoncastillo1712" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm"><img src="{% static 'img/logo github.png' %}" alt="" class="social-ico social-ico--gh">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sim%C3%B3n-castillo-armijo" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm"><img src="{% static 'img/logo linkedin.png' %}" alt="" class="social-ico social-ico--li">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Texto: segundo en mobile (order-2), primero en desktop (order-lg-1) -->
+        <div class="col-lg-8 order-2 order-lg-1">
+            <div class="mb-3">
+                <span class="badge rounded-pill px-3 py-2 fw-semibold"
+                    style="background: rgba(25,198,100,0.18); border: 1px solid rgba(25,198,100,0.55); color: #5dffa0; font-size: .85rem;">
+                    ● Available for work
+                </span>
+            </div>
+            <p class="text-uppercase text-info fw-semibold mb-2" style="font-size:.8rem;">Web Developer Portfolio</p>
+            <h1 class="fw-bold mb-3" style="font-size: clamp(1.5rem, 5vw, 2.5rem); line-height:1.2;">
+                I build web solutions focused on impact, design and results
+            </h1>
+            <p class="text-muted-custom mb-4">
+                I'm Simón Castillo A., a Data Scientist, Web Developer and Designer focused on professional digital experiences,
+                clean interfaces and projects driven by metrics and data-based insights.
+            </p>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <span class="badge rounded-pill badge-tech px-3 py-2">Django</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Python</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Bootstrap</span>
+                <span class="badge rounded-pill badge-tech px-3 py-2">Machine Learning</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{% url 'ciencia_datos' %}" class="btn btn-accent btn-lg">Data Science Profile</a>
+                <a href="{% url 'proyectos' %}" class="btn btn-outline-light btn-lg">View Projects</a>
+                <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg">Get in touch</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section-card mb-4">
+    <h2 class="section-title">Value proposition</h2>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.8rem;">🎨</div>
+                <h3 class="h5">Professional design</h3>
+                <p class="text-muted-custom mb-0">Modern, clean interfaces built to earn the user's trust.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.8rem;">⚡</div>
+                <h3 class="h5">Results-driven development</h3>
+                <p class="text-muted-custom mb-0">Implementation focused on performance, maintainability and measurable goals.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3 border border-secondary-subtle h-100">
+                <div class="mb-2" style="font-size:1.8rem;">📊</div>
+                <h3 class="h5">Data and analytics</h3>
+                <p class="text-muted-custom mb-0">Data-driven decisions to optimize features and processes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-card">
+    <h2 class="section-title mb-3">GitHub activity</h2>
+    <div class="row g-3 justify-content-center">
+        <div class="col-12 text-center">
+            <img src="https://github-readme-stats.vercel.app/api?username=simoncastillo1712&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1b2e&title_color=19c6c8&icon_color=47bfff&text_color=b8d0e8&hide=contribs"
+                alt="GitHub stats for Simón Castillo" class="img-fluid rounded-3" style="max-width:500px;">
+        </div>
+        <div class="col-12 text-center">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=simoncastillo1712&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1b2e&title_color=19c6c8&text_color=b8d0e8&hide=jupyter%20notebook"
+                alt="Most used languages" class="img-fluid rounded-3" style="max-width:400px;">
+        </div>
+    </div>
+</section>
+{% endblock %}

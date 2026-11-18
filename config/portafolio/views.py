@@ -5,12 +5,22 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.utils import translation
 import resend
 import logging
 from .models import MensajeContacto, SolicitudPresupuesto
 from . import presupuesto
 
 logger = logging.getLogger(__name__)
+
+
+def _en(request):
+    return (translation.get_language() or 'es').startswith('en')
+
+
+def _render(request, nombre, contexto=None):
+    """Renderiza la plantilla en el idioma activo (en/ para inglés)."""
+    return render(request, f'en/{nombre}' if _en(request) else nombre, contexto)
 
 
 def _clp(n):
@@ -42,23 +52,23 @@ def _enviar_correo(asunto, texto, reply_to):
 
 
 def inicio(request):
-    return render(request, 'inicio.html')
+    return _render(request, 'inicio.html')
 
 
 def sobre_mi(request):
-    return render(request, 'sobreMi.html')
+    return _render(request, 'sobreMi.html')
 
 
 def ciencia_datos(request):
-    return render(request, 'cienciaDatos.html')
+    return _render(request, 'cienciaDatos.html')
 
 
 def proyectos(request):
-    return render(request, 'proyectos.html')
+    return _render(request, 'proyectos.html')
 
 
 def calculadora(request):
-    return render(request, 'calculadora.html', {'catalogo': presupuesto.catalogo()})
+    return _render(request, 'calculadora.html', {'catalogo': presupuesto.catalogo('en' if _en(request) else 'es')})
 
 
 @require_POST
@@ -73,22 +83,25 @@ def solicitar_presupuesto(request):
     mensaje = request.POST.get('mensaje', '').strip()
     ids = request.POST.getlist('features')
 
+    en = _en(request)
+
     def error(texto):
         return JsonResponse({'ok': False, 'error': texto}, status=400)
 
     if not (nombre and email and asunto and mensaje):
-        return error('Por favor completa todos los campos.')
+        return error('Please fill in all fields.' if en else 'Por favor completa todos los campos.')
     if len(nombre) > 100 or len(asunto) > 200 or len(mensaje) > 5000:
-        return error('Alguno de los campos es demasiado largo.')
+        return error('One of the fields is too long.' if en else 'Alguno de los campos es demasiado largo.')
     try:
         validate_email(email)
     except ValidationError:
-        return error('El correo electrónico no es válido.')
+        return error('The email address is not valid.' if en else 'El correo electrónico no es válido.')
 
     # Los precios se recalculan aquí con el catálogo del servidor; no se confía en el navegador.
     elegidas, mensual, anual = presupuesto.calcular(ids)
     if not elegidas:
-        return error('Selecciona al menos una funcionalidad para solicitar el presupuesto.')
+        return error('Select at least one feature to request the quote.' if en
+                     else 'Selecciona al menos una funcionalidad para solicitar el presupuesto.')
 
     solicitud = SolicitudPresupuesto.objects.create(
         nombre=nombre,
@@ -104,7 +117,8 @@ def solicitar_presupuesto(request):
     texto = (
         f'Nueva solicitud de presupuesto desde el portafolio\n\n'
         f'De: {nombre} <{email}>\n'
-        f'Asunto: {asunto}\n\n'
+        f'Asunto: {asunto}\n'
+        f'Idioma del sitio: {"English" if en else "Español"}\n\n'
         f'Mensaje:\n{mensaje}\n\n'
         f'Funcionalidades seleccionadas ({len(elegidas)}):\n{detalle}\n\n'
         f'Implementación inicial: {_clp(presupuesto.IMPLEMENTACION)}\n'
@@ -133,13 +147,20 @@ def contacto(request):
             )
             _enviar_correo(
                 f'[Portafolio] {asunto} — {nombre}',
-                f'De: {nombre} <{email}>\n\n{mensaje}',
+                f'De: {nombre} <{email}>\nIdioma del sitio: {"English" if _en(request) else "Español"}\n\n{mensaje}',
                 email,
             )
 
-            messages.success(request, '¡Mensaje enviado! Te responderé dentro de 24 horas hábiles.')
+            messages.success(
+                request,
+                "Message sent! I'll reply within 24 business hours." if _en(request)
+                else '¡Mensaje enviado! Te responderé dentro de 24 horas hábiles.',
+            )
             return redirect('contacto')
         else:
-            messages.error(request, 'Por favor completa todos los campos.')
+            messages.error(
+                request,
+                'Please fill in all fields.' if _en(request) else 'Por favor completa todos los campos.',
+            )
 
-    return render(request, 'contacto.html')
+    return _render(request, 'contacto.html')

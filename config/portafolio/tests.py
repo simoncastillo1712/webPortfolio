@@ -70,3 +70,77 @@ class SolicitarPresupuestoTests(TestCase):
 
     def test_solo_acepta_post(self):
         self.assertEqual(self.client.get(self.url).status_code, 405)
+
+
+class IdiomaTests(TestCase):
+    PAGINAS = [
+        ('inicio', 'inicio', 'Home'),
+        ('sobre_mi', 'sobre-mi', 'About me'),
+        ('ciencia_datos', 'ciencia-de-datos', 'Data Science'),
+        ('proyectos', 'proyectos', 'Featured Projects'),
+        ('contacto', 'contacto', 'Send me a message'),
+        ('calculadora', 'calculadora', 'Request a quote'),
+    ]
+
+    def test_todas_las_paginas_cargan_en_ambos_idiomas(self):
+        from django.utils import translation
+        for nombre, _slug, texto_en in self.PAGINAS:
+            with translation.override('es'):
+                url_es = reverse(nombre)
+            with translation.override('en'):
+                url_en = reverse(nombre)
+            self.assertFalse(url_es.startswith('/en/'), url_es)
+            self.assertTrue(url_en.startswith('/en/'), url_en)
+
+            r_es = self.client.get(url_es)
+            self.assertEqual(r_es.status_code, 200, url_es)
+            self.assertContains(r_es, '<html lang="es">')
+
+            r_en = self.client.get(url_en)
+            self.assertEqual(r_en.status_code, 200, url_en)
+            self.assertContains(r_en, '<html lang="en">')
+            self.assertContains(r_en, texto_en)
+
+    def test_el_selector_de_idioma_lleva_a_la_misma_pagina(self):
+        r = self.client.get('/proyectos/')
+        self.assertContains(r, 'href="/en/projects/"')
+        r = self.client.get('/en/projects/')
+        self.assertContains(r, 'href="/proyectos/"')
+
+    def test_el_catalogo_de_la_calculadora_se_entrega_en_ingles(self):
+        r = self.client.get('/en/quote/')
+        self.assertContains(r, 'Shopping cart')
+        self.assertNotContains(r, 'Carro de compras')
+        r = self.client.get('/calculadora/')
+        self.assertContains(r, 'Carro de compras')
+
+    def test_la_pagina_en_ingles_no_deja_textos_en_espanol(self):
+        for ruta in ['/en/', '/en/about/', '/en/data-science/', '/en/projects/', '/en/contact/', '/en/quote/']:
+            html = self.client.get(ruta).content.decode()
+            for palabra in ['Proyectos Destacados', 'Sobre mí', 'Descargar CV', 'Solicitar presupuesto', 'Ver repositorio']:
+                self.assertNotIn(palabra, html, f'{palabra} en {ruta}')
+
+    def test_el_boton_de_cv_en_ingles_aparece_solo_si_existe_el_archivo(self):
+        from django.contrib.staticfiles import finders
+        existe = bool(finders.find('docs/CV Simon Castillo 2026 EN.pdf'))
+        html = self.client.get('/en/about/').content.decode()
+        self.assertEqual('Download CV' in html, existe)
+        self.assertIn('Descargar CV', self.client.get('/sobre-mi/').content.decode())
+
+    @patch('portafolio.views.resend.Emails.send')
+    def test_solicitud_en_ingles_devuelve_errores_en_ingles(self, send):
+        r = self.client.post('/en/quote/request/', {'nombre': 'A', 'email': 'a@b.cl', 'asunto': 'x', 'mensaje': 'y'})
+        self.assertEqual(r.status_code, 400)
+        self.assertIn('Select at least one feature', r.json()['error'])
+        r = self.client.post('/quote/request/', {})
+        self.assertEqual(r.status_code, 404)  # la ruta en español no existe bajo ese nombre
+
+    @patch('portafolio.views.resend.Emails.send')
+    def test_correo_al_dueno_indica_el_idioma_del_visitante(self, send):
+        self.client.post('/en/quote/request/', {
+            'nombre': 'Jane', 'email': 'jane@example.com', 'asunto': 'Site', 'mensaje': 'Hi',
+            'features': ['cms'],
+        })
+        texto = send.call_args[0][0]['text']
+        self.assertIn('Idioma del sitio: English', texto)
+        self.assertIn('Panel CMS', texto)  # el correo a Simón va siempre en español
