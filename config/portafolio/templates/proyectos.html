@@ -21,7 +21,7 @@
         Plataforma web en producción para un club y recinto de eventos en Santiago de Chile, que integra en un solo
         sistema: <strong>tienda online</strong> de ropa por encargo, <strong>venta digital de entradas</strong>,
         <strong>consumo de barra</strong> por ticket, <strong>gestión de staff y finanzas</strong>,
-        <strong>comunidad</strong> (chat, mural y coordinación de encuentros) y un <strong>asistente de IA</strong>
+        <strong>comunidad</strong> (chat y mural) y un <strong>asistente de IA</strong>
         disponible en web y WhatsApp. Es un producto real, con usuarios reales y pagos reales, desarrollado de punta a punta:
         modelado de datos, backend, frontend, integraciones, despliegue y operación.
     </p>
@@ -39,7 +39,7 @@
         <li><strong>Ticketing:</strong> entradas digitales, FreePass, ventana de evento activo de 10 horas, panel de asistencia y reserva de estacionamiento.</li>
         <li><strong>Consumo de barra:</strong> cuenta abierta por ticket, pedidos detallados, reglas de cierre automático según tipo de entrada y control de prendas en custodia.</li>
         <li><strong>Gestión interna:</strong> sueldos semanales calculados por turnos, tarifas y comisiones; adelantos y bonos; inventario de barra; ingresos, egresos, deudas en cuotas y dashboard estadístico.</li>
-        <li><strong>Comunidad:</strong> canales públicos y mensajes directos, mural con publicaciones pagadas, galería de video y módulo de coordinación de encuentros con fotos efímeras y cola de moderación.</li>
+        <li><strong>Comunidad:</strong> canales públicos y mensajes directos, mural con publicaciones pagadas, galería de video y cola de moderación.</li>
         <li><strong>Muchi (chatbot IA):</strong> asistente basado en DeepSeek que atiende dudas sobre entradas, tienda y ubicación, tanto en la web como por WhatsApp.</li>
     </ul>
 
@@ -60,7 +60,7 @@
         <li><strong>Credenciales:</strong> contraseñas con PBKDF2 y validadores de complejidad; protección CSRF en todos los formularios; <em>SECRET_KEY</em> y todas las claves de API fuera del código (variables de entorno), con el arranque bloqueado si falta la clave secreta.</li>
         <li><strong>Control de acceso:</strong> límite de intentos en el login del staff (5 intentos y bloqueo de 15 minutos).</li>
         <li><strong>Verificación de edad (21+)</strong> por RUT y fecha de nacimiento.</li>
-        <li><strong>Privacidad por diseño:</strong> dirección del recinto oculta en entradas web (solo se envía por correo), dirección de anfitriones visible solo tras confirmar asistencia, fotos efímeras que se autodestruyen y moderación de reportes.</li>
+        <li><strong>Privacidad por diseño:</strong> dirección del recinto oculta en entradas web (solo se envía por correo) y moderación de reportes.</li>
         <li><strong>Cumplimiento:</strong> política de privacidad alineada con la Ley 21.719 de protección de datos personales de Chile.</li>
     </ul>
 
@@ -107,7 +107,7 @@
         <li><strong>Comercial:</strong> gestión de clientes, staff y ventas, con vista consolidada por evento.</li>
         <li><strong>Staff y remuneraciones:</strong> cálculo semanal de pago según turnos, tarifas y comisiones, con adelantos y bonos.</li>
         <li><strong>Finanzas:</strong> ingresos, egresos y deudas con control de cuotas.</li>
-        <li><strong>Comunidad y moderación:</strong> administración de galería de video, mural con publicaciones pagadas, juntas privadas (anfitriones, invitados y solicitudes) y cola de reportes.</li>
+        <li><strong>Comunidad y moderación:</strong> administración de galería de video, mural con publicaciones pagadas y cola de reportes.</li>
         <li><strong>Dashboard de estadísticas:</strong> indicadores clave y gráficos con Chart.js sobre ingresos, clientes nuevos y recurrentes, entradas, FreePass emitidos, visitas, clics externos y uso del chatbot.</li>
         <li><strong>Usuarios, perfiles y roles:</strong> creación de perfiles de cliente, staff y administrador, con roles configurables directamente desde el panel, sin tocar código. Cada rol define qué puede ver y hacer la persona y puede tener un sueldo asignado. Los privilegios siguen el principio de <strong>mínimo privilegio</strong>: el staff accede con una clave de 4 dígitos y solo ve la información que el administrador autoriza (control de acceso basado en roles).</li>
         <li><strong>Seguridad del panel:</strong> acceso solo para staff autenticado, con límite de intentos de login (5 intentos y bloqueo de 15 minutos).</li>
