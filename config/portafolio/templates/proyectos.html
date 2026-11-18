@@ -4,13 +4,15 @@
 {% block contenido %}
 <section class="section-card mb-4">
     <h1 class="section-title mb-3">Proyectos Destacados</h1>
-    <p class="text-muted-custom mb-0">
-        En esta sección presento 6 proyectos de desarrollo web, comenzando por EntreMuchos, una plataforma full-stack en producción desplegada en la nube, y los demás publicados en mi GitHub, mostrando funcionalidades clave y evidencias visuales de cada solución<br>
-        Además incluyo un proyecto de Machine Learning orientado a la predicción de consumo de combustible en camiones CAEX para minería, con resultados y visualizaciones relevantes. <br>
-        Los proyectos están ordenados por complejidad: primero el producto en producción, luego el proyecto de Machine Learning y después el resto, del más complejo al más simple. <br>
-        <br> 
-        Cada proyecto incluye una descripción detallada, tecnologías utilizadas y capturas de pantalla para ilustrar su funcionalidad y diseño.<br>
-        Tambien puedes descargar mi CV completo y acceder a mi GitHub para ahondar en mi experiencia profesional, formación y habilidades técnicas. </p> <br>
+    <p class="text-muted-custom">En esta sección presento mis proyectos, con funcionalidades clave y evidencias visuales de cada solución:</p>
+    <ul class="text-muted-custom">
+        <li><strong>6 proyectos de desarrollo web:</strong> EntreMuchos, una plataforma full-stack en producción desplegada en la nube, y los demás publicados en mi GitHub.</li>
+        <li><strong>1 proyecto de Machine Learning</strong> para predecir el consumo de combustible en camiones CAEX en minería, con resultados y visualizaciones.</li>
+        <li><strong>Orden por complejidad:</strong> primero el producto en producción, luego el proyecto de Machine Learning y después el resto, del más complejo al más simple.</li>
+        <li><strong>Cada proyecto incluye</strong> descripción detallada, tecnologías utilizadas y capturas de pantalla.</li>
+        <li>También puedes descargar mi CV completo y acceder a mi GitHub para ahondar en mi experiencia y habilidades técnicas.</li>
+    </ul>
+</section>
 
 <section class="section-card mb-4 border border-info-subtle">
     <span class="badge text-bg-info mb-2">Proyecto destacado · En producción</span>
@@ -148,24 +150,30 @@
 
 <section class="section-card mb-4">
     <h2 class="h3">2) Predicción de Consumo de Combustible de Camiones CAEX (Minería)</h2>
-    <p class="text-muted-custom">
-        Proyecto de Machine Learning orientado a predecir el nivel de combustible en camiones CAEX
-        para anticipar recargas, reducir detenciones no planificadas y apoyar la logística operacional en minería.
-        El trabajo incluye integración de datos de sensores, análisis exploratorio, feature engineering temporal,
-        modelamiento predictivo y una capa operativa de priorización tipo semáforo.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Aporte técnico relevante:</strong> Se construyó un modelo temporal con variables como <em>nivel_lag_1</em> y
-        <em>dt_min</em>, obteniendo alta precisión en predicción de corto plazo (MAE/RMSE bajos y R² cercano a 1 en escenario
-        simulado). Además, se desarrolló simulación de horizontes (30/60/90 min) y reglas de decisión logística para
-        determinar qué camiones deben recargar primero según criticidad.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Tecnologías utilizadas: </strong>Python, Pandas, Scikit-learn, Matplotlib y Seaborn para análisis y modelamiento.
-        Se implementaron técnicas de feature engineering temporal, modelado predictivo con regresión y evaluación de métricas de desempeño, 
-        junto con visualizaciones para interpretar resultados y una lógica de priorización operativa basada en reglas logísticas. 
-        El proyecto demuestra la aplicación de ciencia de datos para optimizar procesos críticos en la industria minera.
-    </p>
+    <p class="text-muted-custom">Proyecto de Machine Learning orientado a predecir el nivel de combustible en camiones CAEX, para anticipar recargas, reducir detenciones no planificadas y apoyar la logística operacional en minería.</p>
+    <h3 class="h5 mt-3">Qué incluye</h3>
+    <ul class="text-muted-custom">
+        <li>Integración de datos de sensores.</li>
+        <li>Análisis exploratorio.</li>
+        <li>Feature engineering temporal.</li>
+        <li>Modelamiento predictivo.</li>
+        <li>Capa operativa de priorización tipo semáforo.</li>
+    </ul>
+    <h3 class="h5 mt-3">Aporte técnico relevante</h3>
+    <ul class="text-muted-custom">
+        <li>Modelo temporal con variables como <em>nivel_lag_1</em> y <em>dt_min</em>.</li>
+        <li>Alta precisión en predicción de corto plazo (MAE/RMSE bajos y R² cercano a 1 en escenario simulado).</li>
+        <li>Simulación de horizontes de 30, 60 y 90 minutos.</li>
+        <li>Reglas de decisión logística para determinar qué camiones deben recargar primero según criticidad.</li>
+    </ul>
+    <h3 class="h5 mt-3">Tecnologías y técnicas</h3>
+    <ul class="text-muted-custom">
+        <li><strong>Herramientas:</strong> Python, Pandas, Scikit-learn, Matplotlib y Seaborn.</li>
+        <li>Feature engineering temporal y modelado predictivo con regresión.</li>
+        <li>Evaluación de métricas de desempeño y visualizaciones para interpretar resultados.</li>
+        <li>Lógica de priorización operativa basada en reglas logísticas.</li>
+    </ul>
+    <p class="text-muted-custom">El proyecto demuestra la aplicación de ciencia de datos para optimizar procesos críticos en la industria minera.</p>
     <div class="row g-3 mt-1">
         <div class="col-md-6">
             <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/mineria/1. Portada.png' %}" alt="Minería - Portada del proyecto">
@@ -198,29 +206,34 @@
 
 <section class="section-card mb-4">
     <h2 class="h3">3) Sitio Web Extintores REXFIRE</h2>
-    <p class="text-muted-custom">
-        Plataforma e-commerce completa para empresa chilena de extintores, que combina una tienda pública
-        con un panel administrativo y un asistente de ventas con inteligencia artificial.
-        Los clientes se identifican por RUT (sin contraseña), pueden explorar el catálogo con especificaciones técnicas,
-        agregar productos al carrito y completar la compra, generando una boleta en PDF automáticamente.
-        El sistema aplica 19% de IVA, calcula despacho y ofrece envío gratis sobre $300.000 CLP.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Característica destacada — REXI (chatbot IA):</strong> Widget flotante que recomienda extintores
-        según el uso y entorno del cliente, con acceso en tiempo real al inventario y precios,
-        adición directa al carrito desde el chat, generación de cotizaciones por correo y
-        seguimiento de conversaciones con detección automática de abandono.
-        Además integra WhatsApp vía Twilio para atención multicanal.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Panel administrativo:</strong> Gestión completa de inventario, clientes, proveedores, vendedores
-        y ventas con comisiones automáticas del 20% para vendedores humanos. Incluye reportes de ventas,
-        monitoreo de conversaciones del chatbot y origen del pedido (web directa vs. IA).
-    </p>
-    <p class="text-muted-custom">
-        <strong>Tecnologías utilizadas:</strong> Django 6.0.3, Python, MySQL 8.0, Bootstrap 5.3.2,
-        DeepSeek API (IA generativa), Twilio (WhatsApp), Pillow y generación de PDF.
-    </p>
+    <p class="text-muted-custom">Plataforma e-commerce completa para una empresa chilena de extintores, que combina una tienda pública con un panel administrativo y un asistente de ventas con inteligencia artificial.</p>
+    <h3 class="h5 mt-3">Tienda</h3>
+    <ul class="text-muted-custom">
+        <li>Los clientes se identifican por RUT (sin contraseña).</li>
+        <li>Exploran el catálogo con especificaciones técnicas, agregan productos al carrito y completan la compra.</li>
+        <li>Boleta en PDF generada automáticamente.</li>
+        <li>Aplica 19% de IVA, calcula despacho y ofrece envío gratis sobre $300.000 CLP.</li>
+    </ul>
+    <h3 class="h5 mt-3">Característica destacada: REXI (chatbot IA)</h3>
+    <ul class="text-muted-custom">
+        <li>Widget flotante que recomienda extintores según el uso y entorno del cliente.</li>
+        <li>Acceso en tiempo real al inventario y precios.</li>
+        <li>Adición directa al carrito desde el chat y cotizaciones por correo.</li>
+        <li>Seguimiento de conversaciones con detección automática de abandono.</li>
+        <li>Integración con WhatsApp vía Twilio para atención multicanal.</li>
+    </ul>
+    <h3 class="h5 mt-3">Panel administrativo</h3>
+    <ul class="text-muted-custom">
+        <li>Gestión completa de inventario, clientes, proveedores, vendedores y ventas.</li>
+        <li>Comisiones automáticas del 20% para vendedores humanos.</li>
+        <li>Reportes de ventas, monitoreo de conversaciones del chatbot y origen del pedido (web directa vs. IA).</li>
+    </ul>
+    <h3 class="h5 mt-3">Tecnologías utilizadas</h3>
+    <ul class="text-muted-custom">
+        <li>Django 6.0.3, Python, MySQL 8.0 y Bootstrap 5.3.2.</li>
+        <li>DeepSeek API (IA generativa) y Twilio (WhatsApp).</li>
+        <li>Pillow y generación de PDF.</li>
+    </ul>
     <div class="row g-3 mt-1">
         <div class="col-md-6">
             <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/extintores rexfire/RexfireInicio.png' %}" alt="Extintores Rexfire - Inicio">
@@ -244,17 +257,19 @@
 
 <section class="section-card mb-4">
     <h2 class="h3">4) Billetera Digital AlkeWallet</h2>
-    <p class="text-muted-custom">
-        Aplicación web de billetera digital enfocada en operaciones financieras básicas:
-        inicio de sesión, consulta de saldo, depósitos y envío de dinero entre contactos.
-        El proyecto prioriza una experiencia de usuario clara y validaciones de flujo para transacciones.
-        Tiene como objetivo ofrecer una solución simple y funcional para la gestión de finanzas personales.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap. 
-        Se implementaron funcionalidades de autenticación, manejo de sesiones, validaciones de formularios 
-        y diseño responsivo para garantizar una experiencia óptima en dispositivos móviles y de escritorio.
-    </p>
+    <p class="text-muted-custom">Aplicación web de billetera digital enfocada en operaciones financieras básicas, con una experiencia de usuario clara y validaciones de flujo para transacciones.</p>
+    <h3 class="h5 mt-3">Funcionalidades</h3>
+    <ul class="text-muted-custom">
+        <li>Inicio de sesión y manejo de sesiones.</li>
+        <li>Consulta de saldo.</li>
+        <li>Depósitos.</li>
+        <li>Envío de dinero entre contactos.</li>
+        <li>Validaciones de formularios y diseño responsivo (móvil y escritorio).</li>
+    </ul>
+    <h3 class="h5 mt-3">Tecnologías utilizadas</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript y Bootstrap.</li>
+    </ul>
     <div class="row g-3 mt-1">
         <div class="col-md-4">
             <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/billetera digital/1.1 Inicio.png' %}" alt="Billetera Digital - Inicio">
@@ -275,16 +290,18 @@
 
 <section class="section-card mb-4">
     <h2 class="h3">5) Sitio Web Supermercado Soa Juana</h2>
-    <p class="text-muted-custom">
-        Plataforma tipo e-commerce para supermercado con navegación por categorías,
-        visualización de productos, carrito de compra y módulo administrativo (CRUD) para gestión de catálogo.
-        Está orientado a digitalizar la experiencia de compra y administración del negocio.
-        Tiene como objetivo agilizar el proceso de compra para clientes y facilitar la gestión de productos para el negocio.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap.
-        Se implementaron funcionalidades de navegación por categorías, visualización detallada de productos, gestión de carrito de compras y un panel administrativo para CRUD de productos, con validaciones y diseño responsivo.
-    </p>
+    <p class="text-muted-custom">Plataforma tipo e-commerce para supermercado, orientada a digitalizar la experiencia de compra, agilizar el proceso para los clientes y facilitar la gestión de productos del negocio.</p>
+    <h3 class="h5 mt-3">Funcionalidades</h3>
+    <ul class="text-muted-custom">
+        <li>Navegación por categorías.</li>
+        <li>Visualización detallada de productos.</li>
+        <li>Gestión de carrito de compras.</li>
+        <li>Panel administrativo (CRUD) para el catálogo de productos, con validaciones y diseño responsivo.</li>
+    </ul>
+    <h3 class="h5 mt-3">Tecnologías utilizadas</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript y Bootstrap.</li>
+    </ul>
     <div class="row g-3 mt-1">
         <div class="col-md-4">
             <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/supermercado/1.0.Inicio.png' %}" alt="Supermercado - Inicio">
@@ -305,16 +322,18 @@
 
 <section class="section-card mb-4">
     <h2 class="h3">6) Sitio Web Adóptame.cl</h2>
-    <p class="text-muted-custom">
-        Sitio web orientado a la adopción responsable de mascotas, con secciones de
-        adopciones, hogares temporales, donaciones y tienda solidaria. Incluye panel de administración para
-        gestionar registros y contenidos, facilitando la operación de la plataforma.
-        El objetivo es conectar a personas con mascotas en situación de calle, promoviendo la adopción y el apoyo comunitario.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap.
-        Se implementaron funcionalidades de navegación por secciones, visualización de perfiles de mascotas, gestión de hogares temporales, integración de formulario de donaciones y un panel administrativo para CRUD de registros, con validaciones y diseño responsivo para una experiencia óptima en diferentes dispositivos.
-    </p>
+    <p class="text-muted-custom">Sitio web orientado a la adopción responsable de mascotas, que busca conectar a personas con mascotas en situación de calle y promover el apoyo comunitario.</p>
+    <h3 class="h5 mt-3">Funcionalidades</h3>
+    <ul class="text-muted-custom">
+        <li>Secciones de adopciones, hogares temporales, donaciones y tienda solidaria.</li>
+        <li>Visualización de perfiles de mascotas y gestión de hogares temporales.</li>
+        <li>Integración de formulario de donaciones.</li>
+        <li>Panel de administración (CRUD) para gestionar registros y contenidos, con validaciones y diseño responsivo.</li>
+    </ul>
+    <h3 class="h5 mt-3">Tecnologías utilizadas</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript y Bootstrap.</li>
+    </ul>
     <div class="row g-3 mt-1">
         <div class="col-md-4">
             <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/adoptame/1.1 Inicio.png' %}" alt="Adóptame - Inicio">
@@ -335,16 +354,18 @@
 
 <section class="section-card mb-4">
     <h2 class="h3">7) Sitio Web Venta de Tickets</h2>
-    <p class="text-muted-custom">
-        <strong>Descripción:</strong> Plataforma para difusión y venta de entradas de eventos, con exploración de
-        cartelera, detalle por evento, carrito y beneficios por inicio de sesión.
-        El flujo está pensado para agilizar la compra y mejorar la experiencia del usuario final.
-    </p>
-    <p class="text-muted-custom">
-        <strong>Tecnologías utilizadas: </strong> Django, Python, HTML5, CSS3, JavaScript y Bootstrap.
-        Se implementaron funcionalidades de navegación por cartelera, visualización detallada de eventos, gestión de carrito de compras, integración de beneficios por inicio de sesión y 
-        diseño responsivo para garantizar una experiencia óptima en dispositivos móviles y de escritorio. 
-    </p>
+    <p class="text-muted-custom">Plataforma para difusión y venta de entradas de eventos, pensada para agilizar la compra y mejorar la experiencia del usuario final.</p>
+    <h3 class="h5 mt-3">Funcionalidades</h3>
+    <ul class="text-muted-custom">
+        <li>Exploración de cartelera y detalle por evento.</li>
+        <li>Gestión de carrito de compras.</li>
+        <li>Beneficios por inicio de sesión.</li>
+        <li>Diseño responsivo para móviles y escritorio.</li>
+    </ul>
+    <h3 class="h5 mt-3">Tecnologías utilizadas</h3>
+    <ul class="text-muted-custom">
+        <li>Django, Python, HTML5, CSS3, JavaScript y Bootstrap.</li>
+    </ul>
     <div class="row g-3 mt-1">
         <div class="col-md-4">
             <img class="img-fluid rounded-3 border border-secondary-subtle" src="{% static 'img/tickets/1.1 Inicio.png' %}" alt="Tickets - Inicio">
